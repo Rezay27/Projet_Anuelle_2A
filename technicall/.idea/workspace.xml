@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp641\www\technicall\php" />
+      <recent name="D:\wamp641\www\technicall\php\stripe" />
+      <recent name="D:\wamp641\www\technicall" />
+      <recent name="D:\wamp64\www\technicall" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="gestionBOMembre.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/gestionBOMembre.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.gestionBOMembre.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
+      <created>1583071109042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583071109042</updated>
+      <workItem from="1583071110321" duration="7962000" />
+      <workItem from="1583085203353" duration="4825000" />
+      <workItem from="1583101523990" duration="866000" />
+      <workItem from="1583261763016" duration="6050000" />
+      <workItem from="1583344617275" duration="15867000" />
+      <workItem from="1583413467010" duration="14834000" />
+      <workItem from="1583435351760" duration="3340000" />
+      <workItem from="1583959362622" duration="7829000" />
+      <workItem from="1584022024495" duration="1201000" />
+      <workItem from="1584038484142" duration="7868000" />
+      <workItem from="1584056278770" duration="635000" />
+      <workItem from="1584117586533" duration="74000" />
+      <workItem from="1584383425568" duration="1164000" />
+      <workItem from="1584541883857" duration="1484000" />
+      <workItem from="1585227578525" duration="22000" />
+      <workItem from="1585576509266" duration="3932000" />
+      <workItem from="1585743579435" duration="709000" />
+      <workItem from="1585772713623" duration="3447000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
