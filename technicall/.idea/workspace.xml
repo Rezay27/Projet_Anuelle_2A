@@ -16,7 +16,7 @@
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/xampp/htdocs/Projet_Annuel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -27,10 +27,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wamp641\www\technicall\php" />
-      <recent name="D:\wamp641\www\technicall\php\stripe" />
-      <recent name="D:\wamp641\www\technicall" />
-      <recent name="D:\wamp64\www\technicall" />
+      <recent name="D:\wamp641\www\technicall\php\index" />
+      <recent name="D:\wamp641\www\technicall\php\include" />
+      <recent name="D:\wamp641\www\technicall\php\demande_service" />
+      <recent name="D:\wamp641\www\technicall\php\back_office" />
+      <recent name="D:\wamp641\www\technicall\php\connexion" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -46,7 +47,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="gestionBOMembre.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/gestionBOMembre.php">
+    <configuration name="gestionBOMembre.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/back_office/gestionBOMembre.php">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -82,7 +83,8 @@
       <workItem from="1585227578525" duration="22000" />
       <workItem from="1585576509266" duration="3932000" />
       <workItem from="1585743579435" duration="709000" />
-      <workItem from="1585772713623" duration="3447000" />
+      <workItem from="1585772713623" duration="4076000" />
+      <workItem from="1585841985985" duration="14144000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php require('../connect_bdd.php');
+<?php require('../include/connect_bdd.php');
 $date = date("d-m-Y");
 $heure = date("H:i");
 require_once "config.php";
@@ -17,6 +17,7 @@ require_once "config.php";
 
         .card {
             width: 300px;
+            min-height: 500px;
         }
 
         .card:hover {
@@ -35,21 +36,27 @@ require_once "config.php";
         .list-group-item {
             border: 0px;
             padding: 5px;
+            margin-bottom: 10px;
         }
 
         .price {
             font-size: 72px;
         }
 
-        .currency {
-            position: relative;
-            font-size: 25px;
-            top: -31px;
+        .style_button{
+            bottom  : 10px;
+            position : absolute;
+            margin-left: 22%;
+        }
+
+        footer{
+            position : fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
-<?php include('../header.php'); ?>
+<?php include('../include/header.php'); ?>
 <div class="container">
     <?php
         $colNum = 1;
@@ -61,7 +68,7 @@ require_once "config.php";
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header text-center">
-                            <h2 class="price"><span class="currency">$</span>'.($attributes['price']/100).'</h2>
+                            <h2 class="price"><span class="currency">€</span>'.($attributes['price']/100).'</h2>
                         </div>
                         <div class="card-body text-center">
                             <div class="card-title">
@@ -76,15 +83,15 @@ require_once "config.php";
                         echo '
                             </ul>
                             <br>
-                            <form action="stripeIPN.php?id='.$productID.'" method="POST">
+                            <form class="style_button" action="stripeIPN.php?id='.$productID.'" method="POST">
                               <script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="'.$stripeDetails['publishableKey'].'"
-                                data-amount="'.$attributes['price'].'"
+                                data-amount="'.$attributes['price'].'" 
                                 data-name="'.$attributes['title'].'"
                                 data-description="Widget"
                                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                data-locale="auto">
+                                data-locale="French">
                               </script>
                             </form>
                         </div>
@@ -100,6 +107,6 @@ require_once "config.php";
         }
     ?>
 </div>
-<?php include('../footer.php'); ?>
+<?php include('../include/footer.php'); ?>
 </body>
 </html>

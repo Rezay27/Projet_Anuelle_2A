@@ -248,7 +248,7 @@ input:hover,select:hover{
 }
 /*---------------Span message erreur -----------*/
 
-span{
+span:not .currency{
   margin-bottom: 5px;
   display: inline-block;
   padding: 5px;
@@ -256,7 +256,6 @@ span{
   font-size:12px;
   float: right;
   width: auto;
-
 }
 /*-------------- Captcha -----------------*/
 
@@ -452,4 +451,12 @@ width: 90%;
   margin-right: 20%;
   margin-left: 20%;
   text-align: center;
+}
+
+
+.currency {
+  float: right;
+  margin-right:30px;
+  position: relative;
+  font-size: 70px;
 }
