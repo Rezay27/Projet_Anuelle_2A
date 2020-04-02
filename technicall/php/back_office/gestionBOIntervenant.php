@@ -107,7 +107,7 @@ if($admin['admin']==1){
                             <td> <input class="modifie" type="text" name="mailmodif" value="<?php echo $member1['mail']?>"></td>
                             <td> <input class="modifie" type="text" name="telephonemodif" value="<?php echo $member1['telephone']?>"></td>
                             <td> <input class="modifie" type="text" value="<?php echo $member1['adresse']?>"><input class="modifie" type="text" value="<?php echo $member1['ville']?>"><input class="modifie" type="text" value="<?php echo $member1['codepostal']?>"></td>
-                            <td ><input class="modifie" type="date" value="<?php echo $member1['birthdate']?>"></td>
+                            <td ><input class="modifie" type="date" name="datemodif" value="<?php echo $member1['birthdate']?>"></td>
 
                             <td> <input class="modifie" type="text" name="Qrcodemodif" value="<?php echo $member1['nomQrCode']?>"></td>
                             <td> <input formaction="gestionBOIntervenant.php?id=<?= $member1['id'];?>" type="submit"  name="Modifier" value="Modifier *"> </td>

@@ -20,7 +20,7 @@ if(isset($_POST['formconnect'])){
           $_SESSION['id'] = $resultat['id_membre'];
           $_SESSION['pseudo'] = $pseudo;
 
-        header("Location: index.php");
+        header("Location:../index/index.php");
      }
 
       else

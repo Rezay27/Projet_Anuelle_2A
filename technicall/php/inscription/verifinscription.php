@@ -34,7 +34,7 @@ if(isset($_POST['valider']))
       );
           }
 
-      header('Location:index.php');
+      header('Location:../index/index.php');
     }
 
 

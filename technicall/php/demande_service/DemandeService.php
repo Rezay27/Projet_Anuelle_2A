@@ -108,7 +108,7 @@ $heure = date("H:i");
             $donnees = $reponse->fetch();
 
             if(isset($donnees['type_abonnement'])){?>
-                <input class="submitservice" type="submit" name="valider" value="Envoyer"/>
+                <input class="submitservice" type="submit" name="abo_valider" value="Envoyer"/>
                 <input class="submitservice" type="submit" name="fermer" value="Annuler"/>
                 <p> * Votre demande est directement enregistré </p>
                 <?php } else {?>
