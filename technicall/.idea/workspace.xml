@@ -16,7 +16,7 @@
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/xampp/htdocs/Projet_Annuel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -84,7 +84,13 @@
       <workItem from="1585576509266" duration="3932000" />
       <workItem from="1585743579435" duration="709000" />
       <workItem from="1585772713623" duration="4076000" />
-      <workItem from="1585841985985" duration="15410000" />
+      <workItem from="1585841985985" duration="16071000" />
+      <workItem from="1585916526294" duration="21000" />
+      <workItem from="1585988884130" duration="21119000" />
+      <workItem from="1586075362347" duration="15729000" />
+      <workItem from="1586615992397" duration="1913000" />
+      <workItem from="1586699097528" duration="6050000" />
+      <workItem from="1586779488043" duration="1056000" />
     </task>
     <servers />
   </component>

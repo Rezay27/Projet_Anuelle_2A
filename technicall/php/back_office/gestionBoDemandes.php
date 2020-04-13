@@ -32,6 +32,7 @@ include('../include/connect_bdd.php');
                         <th> Date </th>
                         <th> Heure </th>
                         <th > Prix </th>
+                        <th> Nombre d'heure </th>
                         <th> Valider </th>
                         <th>Supprimer</th>
                     </tr>
@@ -43,6 +44,7 @@ include('../include/connect_bdd.php');
                             <td> <input class="modifie" type="date" value="<?php echo $demandes['date']?>"></td>
                             <td> <input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
                             <td> <input class="modifie" type="text" value="<?php echo $demandes['prix_demande']?>"></td>
+                            <td> <input class="modifie" type="text" value="<?php echo $demandes['nb_heure']?>"></td>
                             <td> <a href="gestionBoDemandes.php?id_demandes=<?= $demandes['id_demandes'];?>"> Valider </a></td>
                             <?php if(isset($_GET['id_demandes'])AND !empty($_GET['id_demandes'])) {
                                 $id = htmlspecialchars((int)$_GET['id_demandes']);

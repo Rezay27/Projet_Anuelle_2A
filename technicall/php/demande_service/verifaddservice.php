@@ -6,6 +6,7 @@ if(isset($_POST['abo_valider']))
     $name = htmlspecialchars($_POST["addname"]);
     $tarif = htmlspecialchars($_POST["addtarif"]);
     $type = htmlspecialchars($_POST["addtypeservices"]);
+    $nb_heure = htmlspecialchars($_POST["nb_heure"]);
     $ville = htmlspecialchars($_POST["addville"]);
     $adresse = htmlspecialchars($_POST["addadresse"]);
     $code_postal = htmlspecialchars($_POST["addcode_postal"]);
@@ -13,7 +14,7 @@ if(isset($_POST['abo_valider']))
     $heure = htmlspecialchars($_POST["addheureservice"]);
     $id = $_SESSION['id'];
 
-    $insertdemande= $bdd->prepare("INSERT INTO demandes(nom_demande,prix_demande,type_demande,date,heure,ville,code_postal,adresse,valide) VALUES(:nom_demande,:prix_demande,:type_demande,:date,:heure,:ville,:code_postal,:adresse,:valide)");
+    $insertdemande= $bdd->prepare("INSERT INTO demandes(nom_demande,prix_demande,type_demande,date,heure,ville,code_postal,adresse,nb_heure,valide) VALUES(:nom_demande,:prix_demande,:type_demande,:date,:heure,:ville,:code_postal,:adresse,:nb_heure,:valide)");
     $insertdemande->execute(array
         ("nom_demande" => $name,
             "prix_demande" => $tarif . " €",
@@ -23,6 +24,7 @@ if(isset($_POST['abo_valider']))
             "ville" => $ville,
             "code_postal" => $code_postal,
             "adresse" => $adresse,
+            "nb_heure" => $nb_heure,
             "valide" => 0
         )
     );

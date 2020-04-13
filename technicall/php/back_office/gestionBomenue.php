@@ -12,6 +12,8 @@
           <a href ="gestionBODemandes.php"> Gestion Demandes</a>
           <a class="couleurBarre"> | </a>
           <a href ="gestionBOService.php"> Gestion Services</a>
+          <a class="couleurBarre"> | </a>
+          <a href ="gestionBOAbonnement.php">Gestion Abonnement </a>
       </section>
     </section>
 </section>

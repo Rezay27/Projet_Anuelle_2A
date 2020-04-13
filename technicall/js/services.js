@@ -1,3 +1,4 @@
+let total_demande = 0;
 $(document).ready(function () {
     $("#popup").hide();
     $("#popupadd").hide();
@@ -29,4 +30,44 @@ $(document).ready(function () {
     $('#button_add').on("click",function(){
         $('#popupadd').show();
     });
+
+    $('.nb_heure_demande').on("keyup",function(){
+        var totalm = $(this).parents('.number_td').next().next('.total_td').children('p').html();
+        totalm = totalm.split(' ');
+        total_demande =  total_demande - parseInt(totalm[0]) ;
+        $('.prix_Ttotal').text('Total : ' + total_demande + '€');
+
+        var nb_heure = this.value;
+        var tarif = $(this).parents('.number_td').next('.price_td').children().html();
+        var total = nb_heure * tarif;
+        $(this).parents('.number_td').next().next('.total_td').children('p').text(total + '€');
+        console.log();
+        console.log(total);
+        var checkbox = $(this).parents().prev().prev('.checkbox').children('.checkbox_demande');
+        console.log(checkbox);
+
+        if((checkbox).is(':checked')){
+            var price =  $(this).parents('.number_td').next().next('.total_td').children('p').html();
+            price = price.split('€');
+            total_demande = parseInt(price[0]) + total_demande;
+            $('.prix_Ttotal').text('Total : ' + total_demande + '€');
+        }
+    });
+
+        $('.checkbox_demande').change(function () {
+            if (this.checked) {
+                var totalp = $(this).parents('.checkbox').next().next().next().next().children().html();
+                totalp = totalp.split(' ');
+                total_demande = parseInt(totalp[0]) + total_demande;
+                console.log(total_demande);
+                $('.prix_Ttotal').text('Total : ' + total_demande + '€');
+            }else {
+                var totalm = $(this).parents('.checkbox').next().next().next().next().children().html();
+                totalm = totalm.split(' ');
+                total_demande =  total_demande - parseInt(totalm[0]) ;
+                console.log(total_demande);
+                $('.prix_Ttotal').text('Total : ' + total_demande + '€');
+            }
+        });
+
 });
