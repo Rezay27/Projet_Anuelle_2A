@@ -33,6 +33,7 @@ include('../include/connect_bdd.php');
                         <th> Date </th>
                         <th> Heure </th>
                         <th > Prix </th>
+                        <th> Nombre d'heure </th>
                         <th > Intervenant </th>
                         <th> Facture n° </th>
                         <th> Devis n° </th>
@@ -45,6 +46,7 @@ include('../include/connect_bdd.php');
                         <td> <input class="modifie" type="date" value="<?php echo $demandes['date']?>"></td>
                         <td> <input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['prix_demande']?>"></td>
+                        <td> <input class="modifie" type="text" value="<?php echo $demandes['nb_heure']?>"></td>
                         <td> <?php if(isset($demandes['id_intervenant_demande'])) { ?><input class="modifie" type="text" value="<?php echo $demandes['id_intervenant_demande']; ?>"><?php }else{?> AJOUTER <?php }?></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['ref_facture']?>"></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['ref_devis']?>"></td>

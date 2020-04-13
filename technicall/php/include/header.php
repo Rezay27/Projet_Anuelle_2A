@@ -21,8 +21,9 @@ $donnees = $reponse -> fetch();
                 echo "<li><a href=\"../connexion/connexion.php\">".CONNECT."<i class=\"fas fa-users-cog\"></i></i></a></li>";
             }else{
                 echo "<li><a href=\"../index/index.php\">".HOME."<i class=\"fas fa-home\"></i></a></li>";
-                echo "<li><a href=\"../demande_service/DemandeService.php\">".REQUEST."<i class=\"fas fa-users-cog\"></i></i></a></li>";
+                echo "<li><a href=\"../demande_service/choice_service.php\">".REQUEST."<i class=\"fas fa-users-cog\"></i></i></a></li>";
                 echo "<li><a href=\"../stripe/pricing.php\">".SUBSCRIPTION."<i class=\"fas fa-users-cog\"></i></a></li>";
+
                 if($donnees['pseudo']==$_SESSION['pseudo']){
                     echo "<li><a href=\"../back_office/gestionBOMembre.php\">Back Office<i class=\"fas fa-users-cog\"></i></i></a></li>";
                 }

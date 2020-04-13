@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
+    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/abonnement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/back_office/gestionBOAbonnement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/back_office/verifaddabonnementbo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/demande_service/choice_service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBOHistorique.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBOHistorique.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBoDemandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBoDemandes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBomenue.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBomenue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/demande_service/DemandeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/DemandeService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/demande_service/verifaddservice.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/verifaddservice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/demande_service/verifdemandeservice.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/verifdemandeservice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/stripe/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/stripe/pricing.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/pricing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/stripe/stripeIPN.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/stripeIPN.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +100,13 @@
       <workItem from="1585576509266" duration="3932000" />
       <workItem from="1585743579435" duration="709000" />
       <workItem from="1585772713623" duration="4076000" />
-      <workItem from="1585841985985" duration="15410000" />
+      <workItem from="1585841985985" duration="16071000" />
+      <workItem from="1585916526294" duration="21000" />
+      <workItem from="1585988884130" duration="21119000" />
+      <workItem from="1586075362347" duration="15729000" />
+      <workItem from="1586615992397" duration="1913000" />
+      <workItem from="1586699097528" duration="6050000" />
+      <workItem from="1586779488043" duration="1056000" />
       <workItem from="1585901360392" duration="6038000" />
       <workItem from="1586813238573" duration="5558000" />
     </task>
