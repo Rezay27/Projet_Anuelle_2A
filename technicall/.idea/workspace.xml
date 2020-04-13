@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/multi_langue/langue/fr.lang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/multi_langue/langue/test.lang" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/multi_langue/multiLangue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/connect_bdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/connect_bdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/index/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/index/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../technicall4 (1).sql" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +23,21 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/xampp/htdocs/Projet_Annuel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -27,24 +48,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\ESGI\2A\2emeSemestre\Projet_Anuelle_2A\technicall\php\multi_langue" />
       <recent name="D:\wamp641\www\technicall\php\index" />
       <recent name="D:\wamp641\www\technicall\php\include" />
       <recent name="D:\wamp641\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\back_office" />
-      <recent name="D:\wamp641\www\technicall\php\connexion" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="gestionBOMembre.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/back_office/gestionBOMembre.php">
@@ -85,10 +94,26 @@
       <workItem from="1585743579435" duration="709000" />
       <workItem from="1585772713623" duration="4076000" />
       <workItem from="1585841985985" duration="15410000" />
+      <workItem from="1585901360392" duration="6038000" />
+      <workItem from="1586813238573" duration="4937000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="582" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586813494347">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="582" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586813494347" />
+    <state x="648" y="448" key="NewPhpFileDialog" timestamp="1586813463311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="648" y="448" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586813463311" />
+    <state x="719" y="0" width="1208" height="1047" key="dock-window-1" timestamp="1586818157158">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="719" y="0" width="1208" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1586818157158" />
   </component>
 </project>
