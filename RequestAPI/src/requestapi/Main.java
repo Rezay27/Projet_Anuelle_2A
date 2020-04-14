@@ -5,19 +5,36 @@ import java.sql.*;
 public class Main {
     public static void main(String[ ] args) {
 
-        //Chargement des pilote
-        Class.forName("sun.jbdc.obdc.JbdcObdcDriver");
-
-        Connection connection = DriverManager.getConnection("jbdc:mysql://localhost/technicall", "root", "");
-
+        Connection connection = null;
         ResultSet result = null;
+        Statement sender = null;
         String request = "SELECT * FROM demandes";
+        ResultSetMetaData rsmd = null;
 
-        Statement sender = connection.createStatement();
+        //Chargement des pilote
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        result = sender.executeQuery(request);
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/technicall", "root", "");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        ResultSetMetaData rsmd = result.getMetaData();
+
+        try {
+            sender = connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            result = sender.executeQuery(request);
+            rsmd = result.getMetaData();
+
         int nbCols = rsmd.getColumnCount();
         while (result.next()) {
             for (int i = 1; i <= nbCols; i++)
@@ -25,6 +42,9 @@ public class Main {
             System.out.println();
         }
         result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
