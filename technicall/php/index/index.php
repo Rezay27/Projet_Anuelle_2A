@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php require('../include/connect_bdd.php');
 
+
 ?>
 
 <!DOCTYPE html>

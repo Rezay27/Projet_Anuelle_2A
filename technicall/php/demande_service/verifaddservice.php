@@ -64,9 +64,4 @@ if(isset($_POST['abo_valider']))
 
 
 }
-
-if(isset($_POST['fermer'])){
-    header('Location:DemandeService.php');
-
-}
 ?>

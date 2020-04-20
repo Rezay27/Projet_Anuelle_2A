@@ -1,19 +1,25 @@
 <?php session_start();
 include('../include/connect_bdd.php');
 
-if (isset($_POST['valider'])) {
-    $name = htmlspecialchars($_POST["nameservices"]);
-    $tarif = htmlspecialchars($_POST["tarifservices"]);
-    $type = htmlspecialchars($_POST["typeservices"]);
-    $nb_heure = htmlspecialchars($_POST["nb_heure"]);
-    $ville = htmlspecialchars($_POST["ville"]);
-    $adresse = htmlspecialchars($_POST["adresse"]);
-    $code_postal = htmlspecialchars($_POST["code_postal"]);
-    $date = htmlspecialchars($_POST["dateservice"]);
-    $heure = htmlspecialchars($_POST["heureservice"]);
-    $id = $_SESSION['id'];
+if (isset($_POST['payer'])) {
 
-    $select_nb_heure = $bdd->prepare("select * from abonnement_test where id_membre = ?  ");
+    $tableau = htmlspecialchars($_POST['tableau_demande']);
+
+    $tableau1 = explode('-', $tableau);
+    var_dump($tableau1);
+
+    for( $i = 0 ; $i < sizeof($tableau1)-1;$i++){
+        $name = $tableau1[$i];
+        $i++;
+        $nb_heure = $tableau1[$i];
+        $i++;
+        $prix_service = $tableau1[$i];
+        // enregistrer bdd ici
+    }
+    echo $name;
+
+
+    /*$select_nb_heure = $bdd->prepare("select * from abonnement_test where id_membre = ?  ");
     $select_nb_heure->execute(array($_SESSION['id']));
     $nb_heure_exist = $select_nb_heure->fetch();
     //Verifier le nombre d'heure restante
@@ -56,17 +62,10 @@ if (isset($_POST['valider'])) {
 
         //update nombre d'heure restante
         $sous_nb_heure = $bdd->prepare("update abonnement_test set heure_restante=? where id_membre = ? ");
-        $sous_nb_heure->execute(array($nb_heure_exist['heure_restante'] - $nb_heure, $_SESSION['id']));
+        $sous_nb_heure->execute(array($nb_heure_exist['heure_restante'] - $nb_heure, $_SESSION['id']));*/
 
-        header('Location:DemandeService.php?demande=1');
-    } else {
-        header('Location: DemandeService.php?nb_heure=neg');
-    }
+      //  header('Location:DemandeService.php?demande=1');
+
 
     // Si non affichage d'un message avec choix (1- abonnement sup | 2 - paiement le prix du service)
-}
-
-if (isset($_POST['fermer'])) {
-    header('Location:DemandeService.php');
-
 }

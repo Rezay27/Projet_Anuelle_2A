@@ -78,6 +78,18 @@ echo $chemin;*/ ?>
           <span id="erreur7"></span><br>
           <input onblur="verifBirth(this)" id="date_naissance" type="date" name="date_naissance" placeholder="Date de Naissance" min = "1919-01-01" max= "2001-01-11" value=""/>
         </div>
+          <!-- Adresse -->
+          <div class="">
+              <label for="nom"> Adresse </label>
+              <span id=""></span><br>
+              <input onblur="" id="adresse" type="text" name="adresse" placeholder="Adresse" value="<?php if(isset($_POST['adresse']) && $_POST['adresse']!="" ) echo $_POST['adresse'];?>"/>
+          </div>
+          <!-- Ville -->
+          <div class="">
+              <label for="nom"> Ville </label>
+              <span id=""></span><br>
+              <input onblur="" id="ville" type="text" name="ville" placeholder="Ville" value="<?php if(isset($_POST['ville']) && $_POST['ville']!="" ) echo $_POST['ville'];?>"/>
+          </div>
           <!-- Code postal-->
           <div class="">
               <label for="code_postal">Code Postal</label>

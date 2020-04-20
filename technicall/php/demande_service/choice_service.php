@@ -25,7 +25,7 @@ $heure = date("H:i");
 
 <a class="submit" href="DemandeService.php">Un service Simple</a>
 
-<a class="submit" href="../stripe/pricing.php">Un service Récurrent</a>
+<a class="submit" href="../stripe/abonnement.php">Un service Récurrent</a>
 </div>
 <?php include('../include/footer.php'); ?>
     </body>

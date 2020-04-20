@@ -515,7 +515,7 @@ h3 {
     width: 100%;
 }
 
-.submitservice {
+.submitservice,.submitservicenormal {
     display: inline-block;
     width: 60%;
     margin-left: 20%;

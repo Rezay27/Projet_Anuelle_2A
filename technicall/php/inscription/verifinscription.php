@@ -10,6 +10,8 @@ if(isset($_POST['valider']))
   $email = htmlspecialchars($_POST['email']);
   $gender = $_POST['civility'];
   $date_naissance =  htmlspecialchars($_POST['date_naissance']);
+  $adresse = htmlspecialchars($_POST['adresse']);
+  $ville = htmlspecialchars($_POST['ville']);
   $code_postal = htmlspecialchars($_POST['code_postal']);
 
   $reqpseudo = $bdd->prepare("SELECT * FROM membre WHERE pseudo = ?");
@@ -21,7 +23,7 @@ if(isset($_POST['valider']))
     $reqemail->execute(array("$email"));
     $emailexist = $reqemail->rowCount();
     if($emailexist == 0 ) {
-      $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo,prenom,nom,mdp,email,date_naissance,code_postal,date_creation) VALUES(:pseudo,:prenom,:nom,:password,:email,:dateNaissance,:code_postal,NOW())");
+      $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo,prenom,nom,mdp,email,date_naissance,adresse,ville,code_postal,date_creation) VALUES(:pseudo,:prenom,:nom,:password,:email,:dateNaissance,:adresse,:ville,:code_postal,NOW())");
       $insertmbr->execute(array
           ("pseudo" => htmlspecialchars($_POST['pseudo']),
               "prenom" => $prenom,
@@ -29,6 +31,8 @@ if(isset($_POST['valider']))
               "password" => $password,
               "email" => htmlspecialchars($_POST['email']),
               "dateNaissance" => htmlspecialchars($_POST['date_naissance']),
+              "adresse" => $adresse,
+              "ville" => $ville,
               "code_postal" =>htmlspecialchars($_POST['code_postal'])
           )
       );
