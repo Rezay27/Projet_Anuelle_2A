@@ -9,7 +9,11 @@
           <a class="couleurBarre"> | </a>
           <a href ="gestionBOHistorique.php"> Gestion Historique</a>
           <a class="couleurBarre"> | </a>
-          <a href ="gestionBODemandes.php"> Gestion Demandes</a>
+          <a href ="gestionBoDemandesNonAbo.php"> Gestion Demandes Non Abonnés</a>
+          <a class="couleurBarre"> | </a>
+          <a href ="gestionBoDemandesAbo.php"> Gestion Demandes Abonnés</a>
+          <a class="couleurBarre"> | </a>
+          <a href ="gestionBoDemandesPerso.php"> Gestion Demandes Personnalisé</a>
           <a class="couleurBarre"> | </a>
           <a href ="gestionBOService.php"> Gestion Services</a>
           <a class="couleurBarre"> | </a>

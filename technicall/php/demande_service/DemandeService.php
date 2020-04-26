@@ -16,15 +16,7 @@ require_once "configPay.php";
     <script type="text/javascript" src="../../js/services.js"></script>
     <link rel="stylesheet" type="text/css" href="../../DataTables/media/css/datatable.css">
     <link rel="stylesheet" href="../../css/css.css">
-    <style type="text/css">
 
-        .style_button {
-            bottom: 10px;
-            position: absolute;
-            margin-left: 22%;
-        }
-
-    </style>
 </head>
 <body>
 <?php include('../include/header.php'); ?>
@@ -36,14 +28,26 @@ require_once "configPay.php";
     if (isset($_GET['demande']) && $_GET['demande'] == 1) {
         echo '<p style=\'color : green \'> La demande a bien été envoyée ! </p>';
     }
+
     if (isset($_GET['ok']) && $_GET['ok'] == 'sucess') {
         echo '<p style=\'color : green \'> La demande a bien été envoyée ! </p>';
+        $tableau = $_GET['tableau'];
+        echo ' <a href="facture_pdf.php?tableau=<?=$tableau; ?>"> Télécharger la facture </a>';
     }
+
+    if (isset($_GET['ok']) && $_GET['ok'] == 'nbpointneg') {
+        echo '<p style=\'color : red \'> Vous n\'avez pas suffisament de point <a href="../stripe/abonnement.php">Reprendre des points !</a></p>';
+    }
+
     $demande = $bdd->query("Select * FROM services inner join type_service on services.id_type_service = type_service.id_type where service_valide = 1");
 
     $membre = $bdd -> prepare("select * from membre where id_membre = ?");
     $membre -> execute(array($_SESSION['id']));
     $membre_info = $membre ->fetch();
+
+    $abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
+    $abonnement ->execute(array($_SESSION['id']));
+    $abonnement_exist = $abonnement ->fetch();
     ?>
 
     <!-- TABLEAU AFFICHAGE -->
@@ -53,7 +57,11 @@ require_once "configPay.php";
             <th> Choix</th>
             <th>Nom du service</th>
             <th> Nombre d'heure</th>
+            <?php if(isset($abonnement_exist['id_membre'])){?>
+            <th> Nombre de point</th>
+            <?php } else { ?>
             <th>Taux horaire (€/h)</th>
+            <?php } ?>
             <th> Total service</th>
         </tr>
         </thead>
@@ -71,7 +79,7 @@ require_once "configPay.php";
                 <td class="number_td"><input class="nb_heure_demande" type="number"></td>
                 <td class="price_td"><p id="price<?php echo $demandes['id_services'] ?>"
                                         class="listds tarif_demande"><?php echo $demandes['tarif']; ?> </p></td>
-                <td class="total_td"><p class="total<?php echo $demandes['id_services'] ?> total_demande">0 €</p></td>
+                <td class="total_td"><p class="total<?php echo $demandes['id_services'] ?> total_demande"><?php if(isset($abonnement_exist['id_membre'])){?>0 point<?php } else { ?>0 €<?php } ?></p></td>
             </tr>
         <?php } ?>
         </tbody>
@@ -81,7 +89,7 @@ require_once "configPay.php";
     <!-- SECTION TOTAL PRIX -->
     <section class="Ttotal_demande ">
         <div class="divPrice">
-            <input type="text" id="prixtotal" class="prix_Ttotal" value="Total 0 €"/>
+            <input type="text" id="prixtotal" class="prix_Ttotal" value="<?php if(isset($abonnement_exist['id_membre'])){?>Total : 0 point<?php } else { ?>Total : 0 €<?php } ?>"/>
         </div>
         <div class="divSubmit">
             <input class="valide_total" type="submit" value="Valider">
@@ -124,18 +132,13 @@ require_once "configPay.php";
               enctype="multipart/form-data">
             <label>Nom du service :</label>
             <input type="text" name="addname" placeholder="Nom du service">
+            <?php if(isset($abonnement_exist['id_membre'])){?>
+             <label>Prix souhaitez /h (point):</label>
+             <input type="number" name="addtarif" placeholder="Prix Souhaitez">
+            <?php }else { ?>
             <label>Prix souhaitez /h :</label>
             <input type="number" name="addtarif" placeholder="Prix Souhaitez">
-            <label> Genre de service :</label>
-            <?php
-            $nom_type = $bdd->query('SELECT * FROM `type_service` GROUP BY nom_type');
-            ?>
-            <select name="addtypeservices">
-                <option value="">Selectionner une valeur</option>
-                <?php while ($nom_types = $nom_type->fetch()) { ?>
-                    <option value="<?php echo $nom_types['nom_type']; ?>"><?php echo $nom_types['nom_type']; ?></option>
-                <?php } ?>
-            </select>
+            <?php } ?>
             <label> Nombre d'heure :</label>
             <input type="number" name="nb_heure">
             <label>Ville :</label>
@@ -148,20 +151,13 @@ require_once "configPay.php";
             <input name="adddateservice" type="date" min="<?php echo $date ?>">
             <label>Heure :</label>
             <input name="addheureservice" type="time">
-            <?php
-            $reponse = $bdd->query("SELECT * FROM abonnement_test where id_membre='{$_SESSION['id']}' ");
-            $donnees = $reponse->fetch();
-
-            if (isset($donnees['type_abonnement'])) {
-                ?>
+            <?php if(isset($abonnement_exist['id_membre'])){?>
                 <input class="submitservice" type="submit" name="abo_valider" value="Envoyer"/>
-                <input class="submitservice" type="button" name="fermer" value="Annuler"/>
-                <p> * Votre demande est directement enregistré </p>
             <?php } else { ?>
-                <input class="submitservice" type="submit" name="payer" value="Payer"/>
-                <input class="submitservice" type="button"  name="fermer" value="Annuler"/>
-                <p> * Vous allez être redirigé vers la page de paiement </p>
+                <input class="submitservice" type="submit" name="nonabo_valider" value="Envoyer"/>
             <?php } ?>
+                <input class="submitservice" type="button" name="fermer" value="Annuler"/>
+                <p> * Votre demande est sera soumise à validation </p>
         </form>
     </div>
 

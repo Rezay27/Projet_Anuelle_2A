@@ -46,10 +46,14 @@ $(document).ready(function () {
 
     $('.nb_heure_demande').on("keyup", function () {
         var totalm = $(this).parents('.number_td').next().next('.total_td').children('p').html();
+        var lastChar1 = totalm.substr(totalm.length-1);
         totalm = totalm.split(' ');
         total_demande = total_demande - parseInt(totalm[0]);
-        $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
-
+        if(lastChar1 === "€") {
+            $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+        }else{
+            $('.prix_Ttotal').val('Total : ' + total_demande + ' points');
+        }
         var name1 = $(this).parents(".number_td").prev().children().html();
         tab.forEach(function (name) {
             if (name.name === name1) {
@@ -61,20 +65,31 @@ $(document).ready(function () {
         var nb_heure = this.value;
         var tarif = $(this).parents('.number_td').next('.price_td').children().html();
         var total = nb_heure * tarif;
-        $(this).parents('.number_td').next().next('.total_td').children('p').text(total + '€');
+        //$(this).parents('.number_td').next().next('.total_td').children('p').text(total + ' €');
+        var totalp =  $(this).parents('.number_td').next().next('.total_td').children('p').html();
+        var lastChar2 = totalp.substr(totalp.length-1);
+        if(lastChar2 === "€") {
+            $(this).parents('.number_td').next().next('.total_td').children('p').text(total + ' €');
+        }else {
+            $(this).parents('.number_td').next().next('.total_td').children('p').text(total + ' points');
+        }
+
         var checkbox = $(this).parents().prev().prev('.checkbox').children('.checkbox_demande');
 
         t_horaire = $(this).parents('.number_td').next().children().html();
-                    // Stripe accepts payment amounts in cents so we have to convert dollars to cents by multiplying by 100
 
 
         if ((checkbox).is(':checked')) {
             var nb_heure = this.value;
             var price = $(this).parents('.number_td').next().next('.total_td').children('p').html();
-            price = price.split('€');
+            var lastChar3 = price.substr(price.length-1);
+            price = price.split(' ');
             total_demande = parseInt(price[0]) + total_demande;
-            $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
-
+            if(lastChar3 === "€") {
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+            }else{
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' points');
+            }
             tab.push({name: $(this).parents('.number_td').prev().children().html(), nombre_h: nb_heure,taux_h : t_horaire, prix_total :price[0]});
             console.log(tab);
 
@@ -89,20 +104,30 @@ $(document).ready(function () {
             var inputA = $(this).parents('.checkbox').next().next('.number_td').children();
             inputA.prop("disabled", false);
             var totalp = $(this).parents('.checkbox').next().next().next().next().children().html();
+            var lastChar4 = totalp.substr(totalp.length-1);
             totalp = totalp.split(' ');
             total_demande = parseInt(totalp[0]) + total_demande;
-            $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+            console.log(total_demande);
+            if(lastChar4 === "€") {
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+            }else{
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' points');
+            }
             var t_horaire = $(this).parents('.checkbox').next().next().next().children().html();
-;            tab.push({name: $(this).parents('.checkbox').next().children().html(), nombre_h:  inputA , taux_h: t_horaire, prix_total : totalp[0]});
+            tab.push({name: $(this).parents('.checkbox').next().children().html(), nombre_h:  inputA , taux_h: t_horaire, prix_total : totalp[0]});
             console.log(tab)
         } else {
             var inputD = $(this).parents('.checkbox').next().next('.number_td').children();
             inputD.prop('disabled', true);
-
             var totalm = $(this).parents('.checkbox').next().next().next().next().children().html();
+            var lastChar5 = totalm.substr(totalm.length-1);
             totalm = totalm.split(' ');
             total_demande = total_demande - parseInt(totalm[0]);
-            $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+            if(lastChar5 === "€") {
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' €');
+            }else{
+                $('.prix_Ttotal').val('Total : ' + total_demande + ' points');
+            }
             var name1 = $(this).parents(".checkbox").next().children().html();
             tab.forEach(function (name) {
                 if (name.name === name1) {

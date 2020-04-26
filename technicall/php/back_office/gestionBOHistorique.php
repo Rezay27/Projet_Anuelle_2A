@@ -22,7 +22,7 @@ include('../include/connect_bdd.php');
             <section  class="bloc1BO">
                 <h3> Historiques </h3>
                 <?php
-                $demande = $bdd ->query ("SELECT * FROM `demandes` inner join demande_service on demandes.id_demandes = demande_service.id_demande inner join services on demande_service.id_service = services.id_services where demandes.valide = 1");
+                $demande = $bdd ->query ("SELECT * FROM `demandes` inner join demande_service on demandes.id_demandes = demande_service.id_demande inner join services on demande_service.id_service = services.id_services where demandes.statut_demande = 1");
 
                 ?>
                 <table>

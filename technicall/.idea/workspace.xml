@@ -8,7 +8,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -24,7 +24,7 @@
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/xampp/htdocs/Projet_Annuel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -110,7 +110,12 @@
       <workItem from="1587215018058" duration="23000" />
       <workItem from="1587226318278" duration="7072000" />
       <workItem from="1587296475006" duration="7847000" />
-      <workItem from="1587384338169" duration="4213000" />
+      <workItem from="1587384338169" duration="5299000" />
+      <workItem from="1587454733395" duration="37000" />
+      <workItem from="1587555769299" duration="3861000" />
+      <workItem from="1587630531404" duration="421000" />
+      <workItem from="1587812806983" duration="32236000" />
+      <workItem from="1587901476837" duration="20472000" />
     </task>
     <servers />
   </component>

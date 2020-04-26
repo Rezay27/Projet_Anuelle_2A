@@ -58,9 +58,6 @@ require_once "config.php";
 <?php include('../include/header.php'); ?>
 <div class="container">
     <?php
-    $nom = $bdd->prepare("select * from type_abonnement where nom = ? ");
-    $ids = $nom->fetch();
-    $id = $ids['id'];
     $colNum = 1;
     $abonnements = $bdd->query("SELECT * from type_abonnement INNER JOIN info_abonnement ON type_abonnement.id = info_abonnement.type_abonnement ");
     $nb_abonnement = $abonnements->rowCount();

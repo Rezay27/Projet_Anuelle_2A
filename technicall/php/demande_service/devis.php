@@ -12,10 +12,10 @@ $tableau = htmlspecialchars($_POST['tableau_demande']);
 
 $tableau1 = explode('-', $tableau);
 
-$numero_d = $bdd -> prepare('select ref_devis from demandes order by ref_devis DESC LIMIT 0, 1');
+$numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
 $numero_d ->execute(array());
 $last_devis = $numero_d -> fetch();
-$last_devis = $last_devis['ref_devis']+1;
+$last_devis = $last_devis['id_demandes']+1;
 
 
 $prix_total = end($tableau1);
@@ -32,6 +32,10 @@ $description = htmlspecialchars($_POST['description_client']);
 $membre = $bdd->prepare("select * from membre where id_membre = ?");
 $membre->execute(array($_SESSION['id']));
 $membre_info = $membre->fetch();
+
+$abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
+$abonnement ->execute(array($_SESSION['id']));
+$abonnement_exist = $abonnement ->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -65,20 +69,30 @@ $membre_info = $membre->fetch();
             <tr>
                 <th>Nom</th>
                 <th>Nombre d'heure</th>
-                <th> Taux Horraire</th>
+                <?php if(isset($abonnement_exist['id_membre'])){?>
+                    <th> Nombre de point</th>
+                <?php } else { ?>
+                    <th>Taux horaire (€/h)</th>
+                <?php } ?>
                 <th>Prix</th>
             </tr>
             <?php for ($i = 0; $i < sizeof($tableau1) - 1; $i++) { ?>
                 <tr>
-
                     <td><p name="nom"><?php echo $tableau1[$i]; ?></p></td>
                     <?php $i++; ?>
                     <td><p name="nb_heure"><?php echo $tableau1[$i]; ?> h</p></td>
                     <?php $i++; ?>
+                    <?php if(isset($abonnement_exist['id_membre'])){?>
+                        <td><p name="t_horaire"><?php echo $tableau1[$i] ?> points</p></td>
+                    <?php }else{?>
                     <td><p name="t_horaire"><?php echo $tableau1[$i] ?> €/h</p></td>
+                    <?php } ?>
                     <?php $i++ ?>
-                    <td><p name="prix"><?php echo $tableau1[$i]; ?> €</p></td>
-
+                    <?php if(isset($abonnement_exist['id_membre'])){?>
+                        <td><p name="prix"><?php echo $tableau1[$i]; ?> points</p></td>
+                    <?php }else{?>
+                        <td><p name="prix"><?php echo $tableau1[$i]; ?> €</p></td>
+                    <?php } ?>
                 </tr>
             <?php } ?>
         </table>
@@ -86,6 +100,12 @@ $membre_info = $membre->fetch();
         <br>
         <!-- AFFICHAGE PRIX -->
         <table>
+            <?php if(isset($abonnement_exist['id_membre'])){?>
+            <tr>
+                <th>Total points</th>
+                <td> <?php echo $prix_total . ' points ' ?></td>
+            </tr>
+            <?php }else {?>
             <tr>
                 <th>Total TTC</th>
                 <td> <?php echo $prix_total . ' € ' ?></td>
@@ -98,6 +118,7 @@ $membre_info = $membre->fetch();
                 <th> Total HT</th>
                 <td><?php echo round($prix_ht, 2) . ' € ' ?></td>
             </tr>
+            <?php }?>
         </table>
         <!-- FIN AFFICHAGE PRIX -->
         <!-- INFO TRANSMIS CACHER -->
@@ -108,7 +129,12 @@ $membre_info = $membre->fetch();
         <input hidden type="date" name="date" value="<?php echo $date; ?>">
         <input hidden type="time" name="heure" value="<?php echo $time; ?>">
         <input hidden type="text" name="description" value="<?php echo $description; ?>">
+        <input hidden type="text" name="devis" value="<?php echo 'Devis'. $last_devis. '-'. $date.'.pdf' ?>">
+        <input hidden type="text" name="facture" value="<?php echo 'Facture'. $last_devis. '-'. $date.'.pdf' ?>">
 
+        <?php if(isset($abonnement_exist['id_membre'])){?>
+        <input  type="submit" value="Enregistrer" name="savedemandepoint">
+        <?php } else {?>
         <!-- BUTTON PAIEMENT -->
         <script
                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -120,10 +146,12 @@ $membre_info = $membre->fetch();
                 data-locale="French">
         </script>
 
+        <?php }?>
+
     </form>
 
 
-    <a href="test_pdf.php?tableau=<?= $tableau;?>" >Save PDF </a>
+    <a href="devis_pdf.php?tableau=<?= $tableau;?>" >Save PDF </a>
 </div>
 
 
