@@ -7,13 +7,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/technicall/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/technicall/vendor/spipu/html2pdf" />
+      <path value="$PROJECT_DIR$/technicall/vendor/composer" />
+      <path value="$PROJECT_DIR$/technicall/vendor/tecnickcom/tcpdf" />
+    </include_path>
   </component>
   <component name="ProjectId" id="1ZzbG5UVKoOCxQGg0UmLJb8ClIB" />
   <component name="ProjectViewState">
@@ -41,6 +49,7 @@
       <workItem from="1585861517852" duration="7000" />
       <workItem from="1585861525879" duration="21000" />
       <workItem from="1586867841237" duration="700000" />
+      <workItem from="1588011306130" duration="71000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#tablebo').DataTable({
+    $('.tablebo').DataTable({
         dom: 'lftip',
         pagingType: "simple_numbers",
         lengthMenu: [5, 10, 15],

@@ -24,12 +24,12 @@ include('../include/connect_bdd.php');
     <?php include('gestionBomenue.php'); ?>
     <div class="divBO">
         <section  class="bloc1BO">
-            <h3> Demandes (Abonnés)</h3>
+            <h3> Demandes en attente d'affactation (Abo) </h3>
             <?php
-            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND type_demande='simple' AND point_demande is not null GROUP BY ref_devis  ");
+            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is null AND type_demande='simple' AND point_demande is not null GROUP BY ref_devis  ");
             ?>
 
-            <table id="tablebo">
+            <table class="tablebo">
                 <thead>
                 <tr>
                     <th> Demande n° </th>
@@ -46,13 +46,58 @@ include('../include/connect_bdd.php');
                 <?php while($demandes = $demande->fetch()){ ?>
                     <tr>
                         <td > <input class="modifie" type="text" value="<?php echo $demandes['id_demandes'];?>"></td>
-                        <td><input class="modifie" type="text" value="<?php echo $demandes['id_membre'];?>"</td>
+                        <?php
+                        $membres = $bdd->prepare('select nom,prenom from membre where id_membre = ? ');
+                        $membres ->execute(array($demandes['id_membre']));
+                        $membre = $membres->fetch();
+                        ?>
+                        <td><input class="modifie" type="text" value="<?php echo $membre["nom"] .' '. $membre['prenom']; ?>"</td>
                         <td > <input class="modifie" type="text" value="<?php echo $demandes['ref_devis']; ?>">  </td>
                         <td  > <input class="modifie facture" type="text" value="<?php echo $demandes['ref_facture']; ?>">  </td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['adresse']?>"><input class="modifie" type="text" value="<?php echo $demandes['ville']?>"><input class="modifie" type="text" value="<?php echo $demandes['code_postal']?>"></td>
                         <td> <input class="modifie" type="date" value="<?php echo $demandes['date_demande']?>"><input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['point_demande']?>  points"></td>
                         <td> <a href="gestionBoDetailDemande.php?facture=<?= $demandes['ref_facture'];?>&id_membre=<?=$demandes['id_membre'];?>"class="popupinfo"> Intervenant & Detail </a></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </section>
+        <section  class="bloc1BO">
+            <h3> Demandes en cours (Abo) </h3>
+            <?php
+            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is not null AND type_demande='simple' AND point_demande is not null GROUP BY ref_devis  ");
+            ?>
+
+            <table class="tablebo">
+                <thead>
+                <tr>
+                    <th> Demande n° </th>
+                    <th> Demandeur</th>
+                    <th> n°devis </th>
+                    <th> n° facture</th>
+                    <th > Lieu </th>
+                    <th> Date </th>
+                    <th> Total </th>
+                    <th> Detail </th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php while($demandes = $demande->fetch()){ ?>
+                    <tr>
+                        <td > <input class="modifie" type="text" value="<?php echo $demandes['id_demandes'];?>"></td>
+                        <?php
+                        $membres = $bdd->prepare('select nom,prenom from membre where id_membre = ? ');
+                        $membres ->execute(array($demandes['id_membre']));
+                        $membre = $membres->fetch();
+                        ?>
+                        <td><input class="modifie" type="text" value="<?php echo $membre["nom"] .' '. $membre['prenom']; ?>"</td>
+                        <td > <input class="modifie" type="text" value="<?php echo $demandes['ref_devis']; ?>">  </td>
+                        <td  > <input class="modifie facture" type="text" value="<?php echo $demandes['ref_facture']; ?>">  </td>
+                        <td> <input class="modifie" type="text" value="<?php echo $demandes['adresse']?>"><input class="modifie" type="text" value="<?php echo $demandes['ville']?>"><input class="modifie" type="text" value="<?php echo $demandes['code_postal']?>"></td>
+                        <td> <input class="modifie" type="date" value="<?php echo $demandes['date_demande']?>"><input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
+                        <td> <input class="modifie" type="text" value="<?php echo $demandes['point_demande']?>  points"></td>
+                        <td> <a href="gestionBoDetailDemande.php?facture=<?= $demandes['ref_facture'];?>&id_membre=<?=$demandes['id_membre'];?>"class="popupinfo"> Detail </a></td>
                     </tr>
                 <?php } ?>
                 </tbody>

@@ -26,7 +26,7 @@ $id_membre = $_GET['id_membre'];
     <?php include('gestionBomenue.php'); ?>
     <div class="divBO">
         <section class="bloc1BO">
-            <h3> Demandes (Abonnés)</h3>
+            <h3> Détail demande </h3>
             <?php
             $demande = $bdd->prepare("SELECT * FROM demandes where ref_facture = ? ");
             $demande->execute(array($facture));
@@ -48,14 +48,21 @@ $id_membre = $_GET['id_membre'];
                         <th>Taux horaire (€/h)</th>
                     <?php } ?>
                     <th> Total</th>
-                    <th> Ajouter un intervenant</th>
+
+                    <th> Intervenant</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 <?php while ($demandes = $demande->fetch()) { ?>
                     <tr>
                         <td><input class="modifie" type="text" value="<?php echo $demandes['ref_facture']; ?>"></td>
-                        <td><input class="modifie" type="text" value="<?php echo $demandes['id_membre']; ?>"</td>
+                        <?php
+                        $membres = $bdd->prepare('select nom,prenom from membre where id_membre = ? ');
+                        $membres ->execute(array($demandes['id_membre']));
+                        $membre = $membres->fetch();
+                        ?>
+                        <td><input class="modifie" type="text" value="<?php echo $membre["nom"] .' '. $membre['prenom']; ?>"</td>
                         <td><input class="modifie" type="text" value="<?php echo $demandes['nom_demande']; ?>"></td>
                         <td><input class="modifie facture" type="text" value="<?php echo $demandes['nb_heure']; ?>">
                         </td>
@@ -69,10 +76,17 @@ $id_membre = $_GET['id_membre'];
                         <td><input class="modifie" type="text" value="<?php echo $demandes['point_demande'] ?>  points">
                             <?php }else{ ?>
                         <td><input class="modifie" type="text" value="<?php echo $demandes['prix_demande'] ?>  €">
-
                             <?php }?>
+                        <?php if(isset($demandes['id_intervenant_demande'])==null) {?>
                         <td><a href="gestionBoDemandesNonAbo.php?id_demandes=<?= $demandes['id_demandes']; ?>">
                                 Ajouter </a></td>
+                        <?php } else {
+                            $intervenants = $bdd ->prepare ('select nom,prenom from intervenant where id = ? ');
+                            $intervenants->execute(array($demandes['id_intervenant_demande']));
+                            $intervenant = $intervenants->fetch();
+                            ?>
+                        <td><input class="modifie" type="text" value="<?php echo $intervenant['nom'] .' '. $intervenant['prenom']; ?>  ">
+                            <?php  } ?>
                     </tr>
                 <?php } ?>
                 </tbody>

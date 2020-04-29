@@ -548,3 +548,13 @@ h3 {
     position: relative;
     font-size: 70px;
 }
+.space {
+    padding-top: 250px;
+}
+
+.no-border {
+                 border-right: 1px solid #CFD1D2;
+                 border-left: none;
+                 border-top: none;
+                 border-bottom: none;
+             }

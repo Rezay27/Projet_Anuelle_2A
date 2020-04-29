@@ -24,25 +24,26 @@
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/xampp/htdocs/Projet_Annuel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\technicall\php\stripe" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\wamp64\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\index" />
       <recent name="D:\wamp641\www\technicall\php\include" />
       <recent name="D:\wamp641\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\back_office" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wamp64\www\technicall\php\stripe" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -116,6 +117,11 @@
       <workItem from="1587630531404" duration="421000" />
       <workItem from="1587812806983" duration="32236000" />
       <workItem from="1587901476837" duration="20472000" />
+      <workItem from="1587980009755" duration="31000" />
+      <workItem from="1588012192652" duration="11143000" />
+      <workItem from="1588061981167" duration="17000" />
+      <workItem from="1588096999899" duration="13540000" />
+      <workItem from="1588182189607" duration="10785000" />
     </task>
     <servers />
   </component>
