@@ -35,15 +35,15 @@
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wamp64\www\technicall\php\stripe" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\wamp64\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\index" />
       <recent name="D:\wamp641\www\technicall\php\include" />
       <recent name="D:\wamp641\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\back_office" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\technicall\php\stripe" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -122,6 +122,8 @@
       <workItem from="1588061981167" duration="17000" />
       <workItem from="1588096999899" duration="13540000" />
       <workItem from="1588182189607" duration="10785000" />
+      <workItem from="1588338526424" duration="27465000" />
+      <workItem from="1588407065843" duration="11953000" />
     </task>
     <servers />
   </component>

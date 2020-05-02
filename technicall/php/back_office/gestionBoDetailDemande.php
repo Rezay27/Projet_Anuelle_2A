@@ -38,6 +38,7 @@ $id_membre = $_GET['id_membre'];
             <table id="tablebo">
                 <thead>
                 <tr>
+                    <th> Devis n° </th>
                     <th> Facture n°</th>
                     <th> Demandeur</th>
                     <th> Nom service</th>
@@ -56,8 +57,16 @@ $id_membre = $_GET['id_membre'];
                 <tbody>
                 <?php while ($demandes = $demande->fetch()) { ?>
                     <tr>
-                        <td><input class="modifie" type="text" value="<?php echo $demandes['ref_facture']; ?>"></td>
-                        <?php
+                        <?php if($demandes['type_demande']=='simple'){?>
+                        <td> <a href="../../images/Devis/<?php echo $demandes['ref_devis'];?>"><?php echo $demandes['ref_devis']; ?></a></td>
+                        <?php }else{ ?>
+                        <td> <a href="../../images/DevisPerso/<?php echo $demandes['ref_devis'];?>"><?php echo $demandes['ref_devis']; ?></a></td>
+                        <?php }?>
+                        <?php if($demandes['type_demande']=='simple'){?>
+                        <td> <a href="../../images/Facture/<?php echo $demandes['ref_facture'];?>"><?php echo $demandes['ref_facture']; ?></a></td>
+                        <?php }else{ ?>
+                         <td> <a href="../../images/FacturePerso/<?php echo $demandes['ref_facture'];?>"><?php echo $demandes['ref_facture']; ?></a></td>
+                        <?php }
                         $membres = $bdd->prepare('select nom,prenom from membre where id_membre = ? ');
                         $membres ->execute(array($demandes['id_membre']));
                         $membre = $membres->fetch();

@@ -43,10 +43,10 @@ $membre = $membres->fetch();
 
 if (isset($abonnement_exist['id_membre'])) {
     $modif_info = $bdd->prepare("update demandes set nom_demande = ? , nb_heure = ? , point_unite = ? , point_demande = ?,ref_devis=? where id_demandes = ? ");
-    $modif_info->execute(array($nom, $nb_heure, $t_horaire, $prix_mod,$devis, $id));
+    $modif_info->execute(array($nom, $nb_heure, $t_horaire, $prix_mod,'Devis'.$devis, $id));
 } else {
     $modif_info = $bdd->prepare("update demandes set nom_demande = ? , nb_heure = ? , taux_horaire = ? , prix_demande = ?,ref_devis = ? where id_demandes = ? ");
-    $modif_info->execute(array($nom, $nb_heure, $t_horaire, $prix_mod,$devis, $id));
+    $modif_info->execute(array($nom, $nb_heure, $t_horaire, $prix_mod,'Devis'.$devis, $id));
 }
 
 foreach ($nomadd as $key => $nom) {
@@ -73,7 +73,7 @@ if (isset($abonnement_exist['id_membre'])) {
         "code_postal" => $demandes['code_postal'],
         "adresse" => $demandes['adresse'],
         "statut_demande" => 0,
-        "ref_devis" => $devis
+        "ref_devis" => 'Devis'.$devis
     ));
 }else {
     $insertinfisup = $bdd->prepare('insert into demandes(id_membre,nom_demande,nb_heure,taux_horaire,prix_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,ref_devis) value (:id_membre,:nom_demande,:nb_heure,:taux_horaire,:prix_demande,:type_demande,:date_demande,:heure,:ville,:code_postal,:adresse,:statut_demande,:ref_devis)');
@@ -90,7 +90,7 @@ if (isset($abonnement_exist['id_membre'])) {
         "code_postal" => $demandes['code_postal'],
         "adresse" => $demandes['adresse'],
         "statut_demande" => 0,
-        "ref_devis" => $devis
+        "ref_devis" => 'Devis'.$devis
     ));
 }
 }
@@ -287,8 +287,8 @@ try {
     $pdf->pdf->SetSubject('Achats de services');
     $pdf->pdf->SetKeywords('HTML2PDF, Devis, PHP');
     $pdf->writeHTML($content);
-    $pdf->output($devis, 'D');
-    $pdf->output('D:\wamp64\www\technicall\images\DevisPerso\ ' . $devis, 'F');
+    $pdf->output('Devis'.$devis, 'D');
+    $pdf->output('D:\wamp64\www\technicall\images\DevisPerso\Devis'. $devis, 'F');
 } catch (HTML2PDF_exception $e) {
     die($e);
 } ?>

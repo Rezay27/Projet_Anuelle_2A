@@ -11,27 +11,25 @@ $date = date("d-m-Y");
 $heure = date("H:i");
 
 
-$tableau = htmlspecialchars($_GET['tableau']);
-$tableau1 = explode('-', $tableau);
-$numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
-$numero_d ->execute(array());
-$last_devis = $numero_d -> fetch();
-$last_devis = $last_devis['id_demandes'];
+    $tableau = htmlspecialchars($_GET['tableau']);
+    $tableau1 = explode('-', $tableau);
+    $numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
+    $numero_d ->execute(array());
+    $last_devis = $numero_d -> fetch();
+    $last_devis = $last_devis['id_demandes'];
 
-$prix_total = end($tableau1);
-$prix_ht = $prix_total / 1.2;
-$tva = $prix_total - $prix_ht;
 
-$membre = $bdd->prepare("select * from membre where id_membre = ?");
-$membre->execute(array($_SESSION['id']));
-$membre_info = $membre->fetch();
+    $prix_total = end($tableau1);
+    $prix_ht = $prix_total / 1.2;
+    $tva = $prix_total - $prix_ht;
+
+    $membre = $bdd->prepare("select * from membre where id_membre = ?");
+    $membre->execute(array($_SESSION['id']));
+    $membre_info = $membre->fetch();
 
 $abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
 $abonnement ->execute(array($_SESSION['id']));
 $abonnement_exist = $abonnement ->fetch();
-
-header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
-
 ?>
 <style type="text/css">
     table {
@@ -105,7 +103,7 @@ header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
 <page backtop="10mm" backleft="10mm" backright="10mm" backbottom="10mm" footer="page;">
     <page_footer>
         <hr/>
-        <p>Fait a Paris, le <?php echo $date; ?></p>
+        <p>Fait a Paris, le <?php  echo $date; ?></p>
         <p>Signature du particulier, suivie de la mension manuscrite "bon pour accord".</p>
     </page_footer>
 
@@ -126,7 +124,7 @@ header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
     </table>
     <table style="margin-top: 50px;">
         <tr>
-            <td class="50p"><h2>Facture n° <?php echo $last_devis; ?> </h2></td>
+            <td class="50p"><h2>Devis n° <?php echo $last_devis; ?> </h2></td>
             <td class="50p" style="text-align: right;">Emis le <?php echo $date; ?></td>
         </tr>
     </table>
@@ -201,15 +199,11 @@ $content = ob_get_clean();
 try {
     $pdf = new HTML2PDF("p", "A4", "fr");
     $pdf->pdf->SetAuthor('Technicall');
-    $pdf->pdf->SetTitle('Facture');
+    $pdf->pdf->SetTitle('Devis');
     $pdf->pdf->SetSubject('Achats de services');
-    $pdf->pdf->SetKeywords('HTML2PDF, Facture, PHP');
+    $pdf->pdf->SetKeywords('HTML2PDF, Devis, PHP');
     $pdf->writeHTML($content);
-    $pdf->output('Facture'. $last_devis. '-'. $date.'.pdf','D');
-    $pdf->output('D:\wamp64\www\technicall\images\Facture\Facture'. $last_devis. '-'. $date .'.pdf','F');
+    $pdf->output('devis'. $last_devis. '-'. $date.'.pdf','D');
 } catch (HTML2PDF_exception $e) {
     die($e);
 }?>
-
-<?php
-?>

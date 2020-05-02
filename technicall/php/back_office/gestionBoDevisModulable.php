@@ -93,6 +93,11 @@ $tva = $prix_total - $prix_ht;
                             <td colspan="2"></td>
                             <td style="text-align: center;" ><strong>Total:</strong></td>
                             <td><input name="total" id="total" style="text-align: center;width: 50%;float: left" type="text" value="<?php echo  $prix_total ; ?>"><p style="float: right;width: 50%">points</p></td>
+                        <tr>
+                            <td colspan="2" class="no-border"></td>
+                            <td style="text-align: center;" ><strong>Nombre de point restant:</strong></td>
+                            <td><input  name="total" id="total" style="text-align: center;width: 50%;float: left" type="text" value="<?php echo  $abonnement_exist['nb_point'] ; ?>"><p style="float: right;width: 50%">points</p></td>
+                        </tr>
                         </tr>
                     <?php } else { ?>
                         <tr>
@@ -117,14 +122,20 @@ $tva = $prix_total - $prix_ht;
                 <input hidden type="text" name="id" value="<?php echo $id; ?>">
                 <input hidden type="number" name="prix_t" value="<?php echo $prix_total?>">
                 <input hidden type="text" name="devis"
-                       value="<?php echo 'Devis' . $id . '-' . $date . '.pdf' ?>">
+                       value="<?php echo  $id . '-' . $date . '.pdf' ?>">
                 <input hidden type="text" name="facture"
                        value="<?php echo 'Facture' . $id . '-' . $date . '.pdf' ?>">
 
 
-                <input type="submit" value="Télécharger le devis" name="savedemandepoint">
+              <input class="submitservice" style="font-weight: bold;" type="submit" value="Télécharger le devis" name="savedemandepoint">
             </form>
-
+            <div class="divvalidedevis">
+                <?php if($demande['ref_devis']==null){?>
+                    <a style="pointer-events: none;" class="validedevis" href="gestionBoDemandesPerso.php?devis=ok">Valider </a>
+                <?php } else { ?>
+                <a class="validedevis" href="gestionBoDemandesPerso.php?devis=ok">Valider </a>
+                <?php }?>
+            </div>
         </section>
     </div>
 </main>

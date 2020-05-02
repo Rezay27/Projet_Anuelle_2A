@@ -25,7 +25,7 @@ $tva = $prix_total - $prix_ht;
 $adresse = htmlspecialchars($_POST['adresse_client']);
 $ville = htmlspecialchars($_POST['ville_client']);
 $cp = htmlspecialchars($_POST['cp_client']);
-$date = htmlspecialchars($_POST['date_client']);
+$date_demande = htmlspecialchars($_POST['date_client']);
 $time = htmlspecialchars($_POST['time_client']);
 $description = htmlspecialchars($_POST['description_client']);
 
@@ -60,9 +60,9 @@ $abonnement_exist = $abonnement ->fetch();
 
 <div class="bloc1">
     <h3>Devis n° <?php echo $last_devis ?> </h3>
-    <form action="stripePay.php?id=10" enctype="multipart/form-data" method="post" id="envoie_devis">
+    <form action="devis_pdf.php?tableau=<?= $tableau ?>&id=10" enctype="multipart/form-data" method="post" id="envoie_devis">
         <p><?php echo $membre_info['nom'] . ' ' . $membre_info['prenom'] . '<br>' . $adresse . ' - ' . $cp . '<br>' . $ville ?></p>
-        <p> Date et Heure de l'intervention : <?php echo $date . ' à ' . $time ?></p>
+        <p> Date et Heure de l'intervention : <?php echo $date_demande . ' à ' . $time ?></p>
         <p> Info complémentaire : <?php echo $description ?> </p>
         <!-- DEBUT AFFICHAGE SERVICE -->
         <table id="info_devis">
@@ -105,6 +105,10 @@ $abonnement_exist = $abonnement ->fetch();
                 <th>Total points</th>
                 <td> <?php echo $prix_total . ' points ' ?></td>
             </tr>
+                <tr>
+                    <th> Point restant sur votre compte </th>
+                    <td> <?php echo $abonnement_exist['nb_point']?></td>
+                </tr>
             <?php }else {?>
             <tr>
                 <th>Total TTC</th>
@@ -126,7 +130,7 @@ $abonnement_exist = $abonnement ->fetch();
         <input hidden type="text" name="adresse" value="<?php echo $adresse; ?>">
         <input hidden type="number" name="cp" value="<?php echo $cp; ?>">
         <input hidden type="text" name="ville" value="<?php echo $ville; ?>">
-        <input hidden type="date" name="date" value="<?php echo $date; ?>">
+        <input hidden type="date" name="date" value="<?php echo $date_demande; ?>">
         <input hidden type="time" name="heure" value="<?php echo $time; ?>">
         <input hidden type="text" name="description" value="<?php echo $description; ?>">
         <input hidden type="text" name="devis" value="<?php echo 'Devis'. $last_devis. '-'. $date.'.pdf' ?>">
@@ -151,7 +155,7 @@ $abonnement_exist = $abonnement ->fetch();
     </form>
 
 
-    <a href="devis_pdf.php?tableau=<?= $tableau;?>" >Save PDF </a>
+    <a href="devis_client.php?tableau=<?= $tableau;?>" >Save PDF </a>
 </div>
 
 

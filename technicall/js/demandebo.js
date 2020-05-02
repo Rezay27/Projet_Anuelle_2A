@@ -12,4 +12,10 @@ $(document).ready(function () {
     });
 
 
+
 });
+function change(){
+    var link = $('.selectperso option:selected').prop('selected',true).val();
+    console.log(link);
+    window.location.href = link;
+}

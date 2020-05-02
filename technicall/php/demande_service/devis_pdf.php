@@ -11,25 +11,163 @@ $date = date("d-m-Y");
 $heure = date("H:i");
 
 
-    $tableau = htmlspecialchars($_GET['tableau']);
+if(isset($_POST['savedemandepoint'])){
+    $tableau = htmlspecialchars($_POST['tableau_demande']);
     $tableau1 = explode('-', $tableau);
-    $numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
-    $numero_d ->execute(array());
-    $last_devis = $numero_d -> fetch();
-    $last_devis = $last_devis['id_demandes'];
 
+    $point_total = end($tableau1);
+
+    $abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
+    $abonnement ->execute(array($_SESSION['id']));
+    $abonnement_exist = $abonnement ->fetch();
+
+    $newpoint = $abonnement_exist['nb_point'] - $point_total;
+
+
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $ville = htmlspecialchars($_POST['ville']);
+    $cp = htmlspecialchars($_POST['cp']);
+    $date_demande = htmlspecialchars($_POST['date']);
+    $time = htmlspecialchars($_POST['heure']);
+    $description = htmlspecialchars($_POST['description']);
+    $devis = htmlspecialchars($_POST['devis']);
+    $facture = htmlspecialchars($_POST['facture']);
+
+    if($newpoint < 0){
+
+        header('Location: DemandeService.php?ok=nbpointneg');
+
+    }else {
+
+        for ($i = 0; $i < sizeof($tableau1) - 1; $i++) {
+            $name = $tableau1[$i];
+            $i++;
+            $nb_heure = $tableau1[$i];
+            $i++;
+            $taux_h = $tableau1[$i];
+            $i++;
+            $prix_t = $tableau1[$i];
+
+            $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,point_unite,point_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture) values (:id_membre,:nom,:nb_heure,:point_unite,:point_demande,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis ,:facture)');
+            $insert->execute(array(
+                "id_membre"=>$_SESSION['id'],
+                "nom" => $name,
+                "nb_heure" => $nb_heure,
+                "point_unite" => $taux_h,
+                "point_demande" => $prix_t,
+                "type_demande" => 'simple',
+                "date_demande" => $date_demande,
+                "heure" => $time,
+                "ville" => $ville,
+                "cp" => $cp,
+                "adresse" => $adresse,
+                "statue" => 0,
+                "intervenant" => NULL,
+                "devis" => $devis,
+                "facture"=> $facture
+
+            ));
+
+            $update_point = $bdd->prepare("UPDATE abonnement_test set nb_point = ? WHERE id_membre = ?  ");
+            $update_point->execute(array($newpoint, $_SESSION['id']));
+        }
+        header('Location:facture_pdf.php?tableau='.$tableau);
+       // header('Location:DemandeService.php?ok=sucess&&tableau='.$tableau);
+
+
+    }
+}else {
+    \Stripe\Stripe::setVerifySslCerts(false);
+
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+    $productID = $_GET['id'];
+
+    if (!isset($_POST['stripeToken'])) {
+        header("Location: DemandeService.php");
+        exit();
+    }
+
+    $token = $_POST['stripeToken'];
+    $email = $_POST["stripeEmail"];
+
+
+    $tableau = htmlspecialchars($_POST['tableau_demande']);
+    $tableau1 = explode('-', $tableau);
 
     $prix_total = end($tableau1);
-    $prix_ht = $prix_total / 1.2;
-    $tva = $prix_total - $prix_ht;
 
-    $membre = $bdd->prepare("select * from membre where id_membre = ?");
-    $membre->execute(array($_SESSION['id']));
-    $membre_info = $membre->fetch();
+
+    $charge = \Stripe\Charge::create(array(
+        "amount" => $prix_total * 100,
+        "currency" => "usd",
+        "description" => "descri",
+        "source" => $token,
+    ));
+
+
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $ville = htmlspecialchars($_POST['ville']);
+    $cp = htmlspecialchars($_POST['cp']);
+    $date_demande = htmlspecialchars($_POST['date']);
+    $time = htmlspecialchars($_POST['heure']);
+    $description = htmlspecialchars($_POST['description']);
+    $devis = htmlspecialchars($_POST['devis']);
+    $facture = htmlspecialchars($_POST['facture']);
+
+    for ($i = 0; $i < sizeof($tableau1) - 1; $i++) {
+        $name = $tableau1[$i];
+        $i++;
+        $nb_heure = $tableau1[$i];
+        $i++;
+        $taux_h = $tableau1[$i];
+        $i++;
+        $prix_t = $tableau1[$i];
+
+        $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,taux_horaire,prix_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture) values (:id_membre,:nom,:nb_heure,:taux_horaire,:prix_demandes,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis,:facture )');
+        $insert->execute(array(
+            "id_membre" => $_SESSION['id'],
+            "nom" => $name,
+            "nb_heure" => $nb_heure,
+            "taux_horaire" => $taux_h,
+            "prix_demandes" => $prix_t,
+            "type_demande" => 'simple',
+            "date_demande" => $date_demande,
+            "heure" => $time,
+            "ville" => $ville,
+            "cp" => $cp,
+            "adresse" => $adresse,
+            "statue" => 0,
+            "intervenant" => NULL,
+            "devis" => $devis,
+            "facture" => $facture
+        ));
+
+        header('Location:facture_pdf.php?tableau='.$tableau);
+
+    }
+}
+$tableau = htmlspecialchars($_GET['tableau']);
+$tableau1 = explode('-', $tableau);
+
+$numero_d = $bdd -> prepare('select id_demandes from demandes  group by ref_devis  order by id_demandes DESC LIMIT 0, 1');
+$numero_d ->execute(array());
+$last_devis = $numero_d -> fetch();
+$last_devis = $last_devis['id_demandes'];
+
+
+$prix_total = end($tableau1);
+$prix_ht = $prix_total / 1.2;
+$tva = $prix_total - $prix_ht;
+
+$membre = $bdd->prepare("select * from membre where id_membre = ?");
+$membre->execute(array($_SESSION['id']));
+$membre_info = $membre->fetch();
 
 $abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
 $abonnement ->execute(array($_SESSION['id']));
 $abonnement_exist = $abonnement ->fetch();
+
     ?>
     <style type="text/css">
         table {
@@ -208,5 +346,4 @@ $abonnement_exist = $abonnement ->fetch();
     } catch (HTML2PDF_exception $e) {
         die($e);
     }?>
-
 

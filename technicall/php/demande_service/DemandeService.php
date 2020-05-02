@@ -21,7 +21,7 @@ require_once "configPay.php";
 <body>
 <?php include('../include/header.php'); ?>
 <div id="searchDS">
-
+    <a href="acceptedemandeperso.php?devis=Devis31-02-05-2020.pdf&id=8">Valider devis</a>
     <h3>Chercher un Service</h3>
 
     <?php

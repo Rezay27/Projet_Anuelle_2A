@@ -558,3 +558,51 @@ h3 {
                  border-top: none;
                  border-bottom: none;
              }
+
+.divchoixdemande {
+    display: inline-block;
+    border: 2px solid #CC970C;
+    box-shadow: 0 0 1em #231D29;
+    text-align: center;
+    border-radius: 1%;
+    padding: 8% 2% 8% 2%;
+    margin: 1% auto;
+    width: 45%
+;}
+.divchoixdemandeperso{
+    border: 2px solid #CC970C;
+    box-shadow: 0 0 1em #231D29;
+    text-align: center;
+    border-radius: 1%;
+    padding: 5% 2% 5% 2%;
+    margin : 3% 37% 5% 37%;
+}
+.boutonhautperso{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.deroulelisteperso{
+display: inline-flex;
+    width: 20%;
+}
+
+.validedevis:link, .validedevis:visited {
+    background-color: #ADADA6;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+.validedevis:hover, .validedevis:active {
+    background-color:  #CC970C;
+}
+
+.divvalidedevis{
+    margin: 1% auto;
+    width: 50%;
+    text-align: center;
+}

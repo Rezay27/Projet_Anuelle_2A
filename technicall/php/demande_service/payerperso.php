@@ -10,27 +10,76 @@ ob_start();
 $date = date("d-m-Y");
 $heure = date("H:i");
 
+$devis = $_GET['devis'];
+$point = $_GET['point'];
+$total = $_GET['total'];
+$id_membre = $_GET['id_membre'];
 
-$tableau = htmlspecialchars($_GET['tableau']);
-$tableau1 = explode('-', $tableau);
-$numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
-$numero_d ->execute(array());
+$prix_ht = $total / 1.2;
+$tva = $total - $prix_ht;
+
+$numero_d = $bdd -> prepare('select id_demandes from demandes  where ref_devis =? group by ref_devis');
+$numero_d ->execute(array($devis));
 $last_devis = $numero_d -> fetch();
 $last_devis = $last_devis['id_demandes'];
 
-$prix_total = end($tableau1);
-$prix_ht = $prix_total / 1.2;
-$tva = $prix_total - $prix_ht;
+$facture= 'Facture'.$last_devis.'-'. $date.'.pdf';
 
+if($point==0){
+\Stripe\Stripe::setVerifySslCerts(false);
+
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+$productID = $_GET['id'];
+
+if (!isset($_POST['stripeToken'])) {
+    header("Location: DemandeService.php");
+    exit();
+}
+
+$token = $_POST['stripeToken'];
+$email = $_POST["stripeEmail"];
+
+
+
+
+
+$charge = \Stripe\Charge::create(array(
+    "amount" => $total * 100,
+    "currency" => "usd",
+    "description" => "descri",
+    "source" => $token,
+));
+
+$update = $bdd->prepare('update demandes set ref_facture=? , statut_devis = 1 where ref_devis =?');
+$update ->execute(array($facture,$devis));
+
+}else {
+
+    $update = $bdd->prepare('update demandes set ref_facture=? , statut_devis = 1 where ref_devis =?');
+    $update ->execute(array($facture,$devis));
+
+    $abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
+    $abonnement ->execute(array($id_membre));
+    $abonnement_exist = $abonnement ->fetch();
+
+    $newpoint = $abonnement_exist['nb_point'] - $total;
+
+    $update_point = $bdd->prepare("UPDATE abonnement_test set nb_point = ? WHERE id_membre = ?  ");
+    $update_point->execute(array($newpoint, $id_membre));
+
+}
 $membre = $bdd->prepare("select * from membre where id_membre = ?");
-$membre->execute(array($_SESSION['id']));
+$membre->execute(array($id_membre));
 $membre_info = $membre->fetch();
 
-$abonnement = $bdd -> prepare("select * from abonnement_test where id_membre = ? ");
-$abonnement ->execute(array($_SESSION['id']));
-$abonnement_exist = $abonnement ->fetch();
 
-header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
+$demandes = $bdd->prepare('select * from demandes where ref_devis = ?');
+$demandes ->execute(array($devis));
+
+
+
+//header('Location: DemandeService.php?ok=payerperso');
 
 ?>
 <style type="text/css">
@@ -145,22 +194,19 @@ header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
         </tr>
         </thead>
         <tbody>
-        <?php for ($i = 0; $i < sizeof($tableau1) - 1; $i++) { ?>
+        <?php while($demande = $demandes->fetch()) { ?>
             <tr>
-                <td><?php echo $tableau1[$i]; ?></td>
-                <?php $i++; ?>
-                <td><?php echo $tableau1[$i]; ?> h</td>
-                <?php $i++;
-                if (isset($abonnement_exist['id_membre'])) { ?>
-                    <td><?php echo $tableau1[$i] ?> points/u</td>
+                <td><?php echo $demande['nom_demande']; ?></td>
+                <td><?php echo $demande['nb_heure']; ?> h</td>
+                <?php if (isset($abonnement_exist['id_membre'])) { ?>
+                    <td><?php echo $demande['point_unite'] ?> points/u</td>
                 <?php } else { ?>
-                    <td><?php echo $tableau1[$i] ?> €/h</td>
+                    <td><?php echo $demande['taux_horaire'] ?> €/h</td>
                 <?php }
-                $i++;
                 if (isset($abonnement_exist['id_membre'])) { ?>
-                    <td><?php echo $tableau1[$i]; ?> points</td>
+                    <td><?php echo $demande["point_demande"]; ?> points</td>
                 <?php } else { ?>
-                    <td><?php echo $tableau1[$i]; ?> €</td>
+                    <td><?php echo $demande['prix_demande']; ?> €</td>
                 <?php } ?>
             </tr>
         <?php } ?>
@@ -175,7 +221,7 @@ header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
             <tr>
                 <td colspan="2" class="no-border"></td>
                 <td style="text-align: center;" rowspan="3"><strong>Total:</strong></td>
-                <td>Total : <?php echo $prix_total; ?> points</td>
+                <td>Total : <?php echo $total; ?> points</td>
             </tr>
         <?php } else { ?>
             <tr>
@@ -189,7 +235,7 @@ header('Location: DemandeService.php?ok=sucess&&tableau='.$tableau);
             </tr>
             <tr>
                 <td colspan="2" class="no-border"></td>
-                <td>TTC : <?php echo $prix_total ?> €</td>
+                <td>TTC : <?php echo $total ?> €</td>
             </tr>
         <?php } ?>
         </tbody>
@@ -206,7 +252,7 @@ try {
     $pdf->pdf->SetKeywords('HTML2PDF, Facture, PHP');
     $pdf->writeHTML($content);
     $pdf->output('Facture'. $last_devis. '-'. $date.'.pdf','D');
-    $pdf->output('D:\wamp64\www\technicall\images\Facture\Facture'. $last_devis. '-'. $date .'.pdf','F');
+    $pdf->output('D:\wamp64\www\technicall\images\FacturePerso\Facture'. $last_devis. '-'. $date .'.pdf','F');
 } catch (HTML2PDF_exception $e) {
     die($e);
 }?>

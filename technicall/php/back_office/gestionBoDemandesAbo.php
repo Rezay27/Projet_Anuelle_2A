@@ -24,9 +24,9 @@ include('../include/connect_bdd.php');
     <?php include('gestionBomenue.php'); ?>
     <div class="divBO">
         <section  class="bloc1BO">
-            <h3> Demandes en attente d'affactation (Abo) </h3>
+            <h3> Demandes en attente d'affactation </h3>
             <?php
-            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is null AND type_demande='simple' AND point_demande is not null GROUP BY ref_devis  ");
+            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is null AND type_demande='simple' AND point_demande is not null and date_demande > now() GROUP BY ref_devis  ");
             ?>
 
             <table class="tablebo">
@@ -52,8 +52,8 @@ include('../include/connect_bdd.php');
                         $membre = $membres->fetch();
                         ?>
                         <td><input class="modifie" type="text" value="<?php echo $membre["nom"] .' '. $membre['prenom']; ?>"</td>
-                        <td > <input class="modifie" type="text" value="<?php echo $demandes['ref_devis']; ?>">  </td>
-                        <td  > <input class="modifie facture" type="text" value="<?php echo $demandes['ref_facture']; ?>">  </td>
+                        <td> <a href="../../images/Devis/<?php echo $demandes['ref_devis']?>"><?php echo $demandes['ref_devis']; ?></a></td>
+                        <td> <a href="../../images/Facture/<?php echo $demandes['ref_facture']?>"><?php echo $demandes['ref_facture']; ?></a></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['adresse']?>"><input class="modifie" type="text" value="<?php echo $demandes['ville']?>"><input class="modifie" type="text" value="<?php echo $demandes['code_postal']?>"></td>
                         <td> <input class="modifie" type="date" value="<?php echo $demandes['date_demande']?>"><input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['point_demande']?>  points"></td>
@@ -64,9 +64,9 @@ include('../include/connect_bdd.php');
             </table>
         </section>
         <section  class="bloc1BO">
-            <h3> Demandes en cours (Abo) </h3>
+            <h3> Demandes en cours </h3>
             <?php
-            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is not null AND type_demande='simple' AND point_demande is not null GROUP BY ref_devis  ");
+            $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is not null AND type_demande='simple' AND point_demande is not null and date_demande > now() GROUP BY ref_devis  ");
             ?>
 
             <table class="tablebo">
@@ -92,8 +92,8 @@ include('../include/connect_bdd.php');
                         $membre = $membres->fetch();
                         ?>
                         <td><input class="modifie" type="text" value="<?php echo $membre["nom"] .' '. $membre['prenom']; ?>"</td>
-                        <td > <input class="modifie" type="text" value="<?php echo $demandes['ref_devis']; ?>">  </td>
-                        <td  > <input class="modifie facture" type="text" value="<?php echo $demandes['ref_facture']; ?>">  </td>
+                        <td> <a href="../../images/Devis/<?php echo $demandes['ref_devis']?>"><?php echo $demandes['ref_devis']; ?></a></td>
+                        <td> <a href="../../images/Facture/<?php echo $demandes['ref_facture']?>"><?php echo $demandes['ref_facture']; ?></a></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['adresse']?>"><input class="modifie" type="text" value="<?php echo $demandes['ville']?>"><input class="modifie" type="text" value="<?php echo $demandes['code_postal']?>"></td>
                         <td> <input class="modifie" type="date" value="<?php echo $demandes['date_demande']?>"><input class="modifie" type="time" value="<?php echo $demandes['heure']?>"></td>
                         <td> <input class="modifie" type="text" value="<?php echo $demandes['point_demande']?>  points"></td>
