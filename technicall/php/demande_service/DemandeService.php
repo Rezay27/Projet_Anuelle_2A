@@ -39,7 +39,7 @@ require_once "configPay.php";
         echo '<p style=\'color : red \'> Vous n\'avez pas suffisament de point <a href="../stripe/abonnement.php">Reprendre des points !</a></p>';
     }
 
-    $demande = $bdd->query("Select * FROM services inner join type_service on services.id_type_service = type_service.id_type where service_valide = 1");
+    $demande = $bdd->query("Select * FROM services where service_valide = 1");
 
     $membre = $bdd -> prepare("select * from membre where id_membre = ?");
     $membre -> execute(array($_SESSION['id']));

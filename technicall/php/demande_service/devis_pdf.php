@@ -48,7 +48,11 @@ if(isset($_POST['savedemandepoint'])){
             $i++;
             $prix_t = $tableau1[$i];
 
-            $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,point_unite,point_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture) values (:id_membre,:nom,:nb_heure,:point_unite,:point_demande,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis ,:facture)');
+            $selectidservice =$bdd ->prepare('select id_services from services where nom_service = ?');
+            $selectidservice->execute(array($name));
+            $selectidservices=$selectidservice->fetch();
+
+            $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,point_unite,point_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture,id_service) values (:id_membre,:nom,:nb_heure,:point_unite,:point_demande,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis ,:facture,:id_service)');
             $insert->execute(array(
                 "id_membre"=>$_SESSION['id'],
                 "nom" => $name,
@@ -64,7 +68,8 @@ if(isset($_POST['savedemandepoint'])){
                 "statue" => 0,
                 "intervenant" => NULL,
                 "devis" => $devis,
-                "facture"=> $facture
+                "facture"=> $facture,
+                "id_service" => $selectidservices['id_services']
 
             ));
 
@@ -115,6 +120,9 @@ if(isset($_POST['savedemandepoint'])){
     $devis = htmlspecialchars($_POST['devis']);
     $facture = htmlspecialchars($_POST['facture']);
 
+
+
+
     for ($i = 0; $i < sizeof($tableau1) - 1; $i++) {
         $name = $tableau1[$i];
         $i++;
@@ -124,7 +132,11 @@ if(isset($_POST['savedemandepoint'])){
         $i++;
         $prix_t = $tableau1[$i];
 
-        $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,taux_horaire,prix_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture) values (:id_membre,:nom,:nb_heure,:taux_horaire,:prix_demandes,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis,:facture )');
+        $selectidservice =$bdd ->prepare('select id_services from services where nom_service = ?');
+        $selectidservice->execute(array($name));
+        $selectidservices=$selectidservice->fetch();
+
+        $insert = $bdd->prepare('insert into demandes (id_membre,nom_demande,nb_heure,taux_horaire,prix_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,id_intervenant_demande,ref_devis,ref_facture,id_service) values (:id_membre,:nom,:nb_heure,:taux_horaire,:prix_demandes,:type_demande,:date_demande,:heure,:ville,:cp,:adresse,:statue,:intervenant,:devis,:facture ,:id_service)');
         $insert->execute(array(
             "id_membre" => $_SESSION['id'],
             "nom" => $name,
@@ -140,7 +152,8 @@ if(isset($_POST['savedemandepoint'])){
             "statue" => 0,
             "intervenant" => NULL,
             "devis" => $devis,
-            "facture" => $facture
+            "facture" => $facture,
+            "id_service"=>$selectidservices['id_services']
         ));
 
         header('Location:facture_pdf.php?tableau='.$tableau);

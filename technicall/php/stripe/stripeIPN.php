@@ -43,7 +43,7 @@ $abonnement_membre->execute(array($_SESSION['id']));
 $abonnement_membres = $abonnement_membre->fetch();
 
 if (isset($abonnement_membres['id'])&& $pack != 'Pack') {
-    $update_abonnement = $bdd->prepare("update abonnement_test set type_abonnement= ? , date_paiement = NOW(), heure_restante=?,debut_abonnement=NOW(), fin_abonnement=DATE_ADD(NOW(),INTERVAL 1 month) where id_membre = ? ");
+    $update_abonnement = $bdd->prepare("update abonnement_test set type_abonnement= ? , date_paiement = NOW(), nb_point=?,debut_abonnement=NOW(), fin_abonnement=DATE_ADD(NOW(),INTERVAL 1 month) where id_membre = ? ");
     $update_abonnement->execute(array($info_abonnement['id'], $info_abonnement['nb_point'], $_SESSION['id']));
 } else if (isset($abonnement_membres['id'])&& $pack == 'Pack'){
     $update_abonnement_pack = $bdd->prepare("update abonnement_test set type_abonnement= ? , date_paiement = NOW(), nb_point=?,debut_abonnement=NOW(), fin_abonnement=DATE_ADD(NOW(),INTERVAL 1 month) where id_membre = ? ");
@@ -57,5 +57,5 @@ if (isset($abonnement_membres['id'])&& $pack != 'Pack') {
     ));
 }
 
-header('Location:pricing.php');
+header('Location:abonnement.php?ok=ok');
 ?>
