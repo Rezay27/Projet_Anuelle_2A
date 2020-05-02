@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/abonnement.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/back_office/gestionBOAbonnement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/back_office/verifaddabonnementbo.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/demande_service/choice_service.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBOHistorique.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBOHistorique.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBoDemandes.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBoDemandes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/back_office/gestionBomenue.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/back_office/gestionBomenue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/demande_service/DemandeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/DemandeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/demande_service/verifaddservice.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/verifaddservice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/demande_service/verifdemandeservice.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/demande_service/verifdemandeservice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/stripe/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/stripe/pricing.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/pricing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/stripe/stripeIPN.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/stripe/stripeIPN.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +93,9 @@
       <workItem from="1586779488043" duration="1056000" />
       <workItem from="1585901360392" duration="6038000" />
       <workItem from="1586813238573" duration="5558000" />
+      <workItem from="1586867839059" duration="1800000" />
+      <workItem from="1587742788737" duration="694000" />
+      <workItem from="1587752565344" duration="600000" />
     </task>
     <servers />
   </component>
@@ -124,9 +111,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="648" y="448" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586813463311" />
-    <state x="719" y="0" width="1208" height="1047" key="dock-window-1" timestamp="1586818157158">
+    <state x="719" y="0" width="1208" height="1047" key="dock-window-1" timestamp="1586867882123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="0" width="1208" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1586818157158" />
+    <state x="719" y="0" width="1208" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1586867882123" />
   </component>
 </project>
