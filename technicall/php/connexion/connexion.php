@@ -32,7 +32,9 @@ include('../include/connect_bdd.php');
             <input class="submit" type="submit"  value="Connexion" name="formconnect">
           </div>
         </form>
-<BR>
+          <br>
+          <a href="connexionIntervenant.php">Je suis un intervenant! </a>
+<br><br>
         <a href="../inscription/inscription.php">Je n'ai pas de compte ! </a>
 
         <div class="erreur">

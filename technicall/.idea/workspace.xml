@@ -123,11 +123,23 @@
       <workItem from="1588096999899" duration="13540000" />
       <workItem from="1588182189607" duration="10785000" />
       <workItem from="1588338526424" duration="27465000" />
-      <workItem from="1588407065843" duration="16698000" />
+      <workItem from="1588407065843" duration="18663000" />
+      <workItem from="1588493633691" duration="8811000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/back_office/gestionBOMembre.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

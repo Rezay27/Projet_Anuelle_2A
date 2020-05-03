@@ -16,7 +16,7 @@ $tableau1 = explode('-', $tableau);
 $numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
 $numero_d ->execute(array());
 $last_devis = $numero_d -> fetch();
-$last_devis = $last_devis['id_demandes'];
+$last_devis = $last_devis['id_demandes']-1;
 
 $prix_total = end($tableau1);
 $prix_ht = $prix_total / 1.2;
