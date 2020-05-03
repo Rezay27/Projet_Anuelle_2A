@@ -1,0 +1,27 @@
+<?php
+
+
+//Header
+define('CONNECT','Connexion');
+define('DISCONNECT','Deconnexion');
+define('SUBSCRIPTION','Abonnement');
+define('REQUEST','Demande et Service');
+define('BO','Back Office');
+
+
+//HEADER FOOTER
+define('HOME','Accueil');
+define('REGISTER','Inscription');
+define('PROFIL','Mon profil');
+
+//Footer
+define('CONTACT','Nous contacter');
+define('WHO','Qui sommes nous ? ');
+define('QUESTION','Des questions ? ');
+
+
+
+
+
+
+?>

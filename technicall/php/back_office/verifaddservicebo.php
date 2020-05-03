@@ -10,7 +10,7 @@ if(isset($_POST['valider_service_bo']))
     $insert->execute(array(
         "nom_service" => $name,
         "tarif" => $prix,
-        "service_valide" => 0
+        "service_valide" => 1
     ));
 
     header('Location:gestionBoService.php');
