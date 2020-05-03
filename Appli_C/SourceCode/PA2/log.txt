@@ -1,0 +1,8 @@
+=================================
+Debut Fusionconnection a la base de donnee principale effectuer
+connection a la base de donnée secondaire effectuer
+
+Query de recuperation des information reussi
+erreur sur la Query : 'INSERT INTO intervenant (id, nom, prenom, mail, telephone, codepostal, ville, adresse, birthdate, nomQrCode) VALUES('DCo_11666', 'Colo', 'Detroi', 'ColoDetroi@gmail.com', '0148758968', '75000', 'Truc', '45 rue des truc', '1666-11-11', 'ColoDetroiDCo_11666Qr.bmp')'
+fermetur submysql reussi !
+L'operation a bien été effectuer

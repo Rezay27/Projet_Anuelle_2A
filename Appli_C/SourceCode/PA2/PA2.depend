@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1585514426 source:d:\cour\esgi\2a\language c avancée\programme\pa2\main.c
+	<windows.h>
+	<MYSQL/mysql.h>
+	<stdio.h>
+	<stdlib.h>
+
+1588497489 source:d:\wamp64\www\esgi\2a\2emesemestre\projet_anuelle_2a\appli_c\pa2\main.c
+	<windows.h>
+	<MYSQL/mysql.h>
+	<stdio.h>
+	<stdlib.h>
+
