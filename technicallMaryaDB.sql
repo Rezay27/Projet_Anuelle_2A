@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 03 avr. 2020 à 15:15
+-- Généré le :  sam. 02 mai 2020 à 20:29
 -- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Version de PHP :  7.4.0
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -32,21 +33,21 @@ CREATE TABLE IF NOT EXISTS `abonnement_test` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type_abonnement` int(11) NOT NULL,
   `date_paiement` date NOT NULL,
-  `heure_restante` int(11) NOT NULL,
+  `nb_point` int(11) NOT NULL,
   `id_membre` int(11) DEFAULT NULL,
+  `debut_abonnement` date NOT NULL,
   `fin_abonnement` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ;
+  PRIMARY KEY (`id`),
+  KEY `id_membre_abonnement` (`id_membre`),
+  KEY `type_abonnement_test` (`type_abonnement`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `abonnement_test`
 --
 
-INSERT INTO `abonnement_test` (`id`, `type_abonnement`, `date_paiement`, `heure_restante`, `id_membre`, `fin_abonnement`) VALUES
-(1, 4, '2020-04-02', 25, NULL, '0000-00-00'),
-(5, 1, '2020-04-03', 12, 7, '2020-05-03'),
-(6, 1, '2020-04-02', 12, 8, '2020-05-02'),
-(7, 1, '2020-04-03', 12, 9, '2020-05-03');
+INSERT INTO `abonnement_test` (`id`, `type_abonnement`, `date_paiement`, `nb_point`, `id_membre`, `debut_abonnement`, `fin_abonnement`) VALUES
+(5, 6, '2020-04-25', 200, 7, '2020-04-25', '2020-05-25');
 
 -- --------------------------------------------------------
 
@@ -57,105 +58,65 @@ INSERT INTO `abonnement_test` (`id`, `type_abonnement`, `date_paiement`, `heure_
 DROP TABLE IF EXISTS `demandes`;
 CREATE TABLE IF NOT EXISTS `demandes` (
   `id_demandes` int(11) NOT NULL AUTO_INCREMENT,
+  `id_membre` int(11) NOT NULL,
   `nom_demande` varchar(200) NOT NULL,
-  `prix_demande` varchar(50) NOT NULL,
+  `nb_heure` int(11) NOT NULL,
+  `taux_horaire` int(11) DEFAULT NULL,
+  `point_unite` int(11) DEFAULT NULL,
+  `prix_demande` varchar(50) DEFAULT NULL,
+  `point_demande` int(11) DEFAULT NULL,
   `type_demande` varchar(50) NOT NULL,
-  `date` date NOT NULL,
+  `date_demande` date NOT NULL,
   `heure` time NOT NULL DEFAULT current_timestamp(),
   `ville` varchar(255) NOT NULL,
   `code_postal` char(5) NOT NULL,
   `adresse` varchar(150) NOT NULL,
   `statut_demande` char(1) NOT NULL DEFAULT '0',
-  `id_intervenant_demande` int(11) DEFAULT NULL,
-  `valide` tinyint(1) NOT NULL,
+  `id_intervenant_demande` varchar(20) DEFAULT NULL,
   `ref_devis` varchar(45) DEFAULT NULL,
   `ref_facture` varchar(45) DEFAULT NULL,
+  `statut_devis` int(11) DEFAULT 0,
+  `refuser` int(11) NOT NULL DEFAULT 0,
+  `id_service_membre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_demandes`),
-  KEY `id_intervenant` (`id_intervenant_demande`)
-) ;
+  KEY `id_membre1` (`id_membre`),
+  KEY `id_intervenant_1` (`id_intervenant_demande`),
+  KEY `id_service_membre` (`id_service_membre`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `demandes`
 --
 
-INSERT INTO `demandes` (`id_demandes`, `nom_demande`, `prix_demande`, `type_demande`, `date`, `heure`, `ville`, `code_postal`, `adresse`, `statut_demande`, `id_intervenant_demande`, `valide`, `ref_devis`, `ref_facture`) VALUES
-(1, 'Besoin d\'un jardinier', '20', '', '2020-03-10', '18:42:23', 'Flins sur seine', '78410', '37 rue de meulan', '0', 1, 1, '1', '1'),
-(2, 'Démarches Administratives  ', '55 €', 'Simple ', '2020-03-05', '02:11:00', 'FLINS SUR SEINE', '78410', '45 rue du chateau', '0', 0, 1, NULL, NULL),
-(3, 'Démarches Administratives  ', '55 €', 'Simple ', '2020-03-05', '02:11:00', 'FLINS SUR SEINE', '78410', '45 rue du chateau', '0', 0, 1, NULL, NULL),
-(4, 'Démarches Administratives  ', '55 €', 'Simple ', '2020-03-05', '02:11:00', 'FLINS SUR SEINE', '78410', '45 rue du chateau', '0', 0, 1, NULL, NULL),
-(5, 'Démarches Administratives  ', '55 €', 'Simple ', '2020-03-05', '02:11:00', 'FLINS SUR SEINE', '78410', '45 rue du chateau', '0', 0, 1, NULL, NULL),
-(6, 'Démarches Administratives  ', '55 €', 'Simple ', '2020-03-05', '02:11:00', 'FLINS SUR SEINE', '78410', '45 rue du chateau', '0', 2, 1, NULL, NULL),
-(7, 'Visites d\'un proche (10 visites) ', '35 €', 'Récurrent ', '2020-03-25', '15:20:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(8, 'Visites d\'un proche (10 visites) ', '35 €', 'Récurrent ', '2020-03-25', '15:20:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(9, 'Visites d\'un proche (10 visites) ', '35 €', 'Récurrent ', '2020-03-25', '15:20:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(10, 'Visites d\'un proche (10 visites) ', '35 €', 'Récurrent ', '2020-03-25', '15:20:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(11, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-06', '12:15:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(12, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-06', '12:15:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(13, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-06', '12:15:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(14, 'Ménage ', '22 €', 'Simple ', '2020-03-03', '02:15:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(15, 'Ménage ', '22 €', 'Simple ', '2020-03-06', '02:15:00', 'Flins sur Seine', '78410', '48 rue des poulpe', '0', NULL, 1, NULL, NULL),
-(16, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-19', '12:15:00', 'Flins sur Seine', '78410', '45 rue du chateau', '0', NULL, 1, NULL, NULL),
-(17, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-19', '12:15:00', 'Flins sur Seine', '78410', '45 rue du chateau', '0', NULL, 1, NULL, NULL),
-(18, 'Gardes d\'animaux ', '25 €', 'Simple ', '2020-03-19', '12:15:00', 'Flins sur Seine', '78410', '45 rue du chateau', '0', NULL, 1, NULL, NULL),
-(19, 'Bricolage | Petits Travaux ', '20 €', 'Simple ', '2020-03-08', '20:15:00', 'Flins sur Seine', '78410', '25 rue des joues', '0', NULL, 1, NULL, NULL),
-(20, '', '', '', '2020-03-12', '12:45:00', 'Flins sur seine', '78410', '37 rue de meulan', '0', NULL, 0, NULL, NULL),
-(21, 'Gateau au chocolat', '', 'Simple', '2020-03-12', '12:45:00', 'Flins sur seine', '78410', '37 rue de meulan', '0', NULL, 0, NULL, NULL),
-(22, 'Gateau au chocolat', '', 'Simple', '2020-03-12', '12:45:00', 'Flins sur seine', '78410', '37 rue de meulan', '0', NULL, 0, NULL, NULL),
-(23, 'Gateau au chocolat', '', 'Simple', '2020-03-12', '12:45:00', 'Flins sur seine', '78410', '37 rue de meulan', '0', NULL, 0, NULL, NULL),
-(24, 'Gateau au chocolat', '', '', '2020-03-12', '12:45:00', 'Flins sur seine', '78410', '37 rue de meulan', '0', NULL, 0, NULL, NULL),
-(25, 'Gateau ', '24', 'Simple', '2020-03-17', '02:12:00', 'Flins', '45785', '45 rue des fleurs', '0', NULL, 1, NULL, NULL),
-(26, 'Ordinateur', '50 €', 'Simple', '2145-12-03', '12:15:00', 'Coco', '78412', '45 rue des fleurs', '0', NULL, 0, NULL, NULL),
-(27, 'Ordinateur', '50 €', 'Simple', '2145-12-03', '12:15:00', 'Coco', '78412', '45 rue des fleurs', '0', NULL, 0, NULL, NULL),
-(28, 'Ordinateur', '50 €', 'Simple', '2145-12-03', '12:15:00', 'Coco', '78412', '45 rue des fleurs', '0', NULL, 0, NULL, NULL),
-(29, 'Ordinateur', '50 €', 'Simple', '2145-12-03', '12:15:00', 'Coco', '78412', '45 rue des fleurs', '0', NULL, 0, NULL, NULL),
-(30, 'Ordinateur', '50 €', 'Simple', '2145-12-03', '12:15:00', 'Coco', '78412', '45 rue des fleurs', '0', NULL, 1, NULL, NULL),
-(31, 'Bouteille de champagne', '150 €', 'Simple', '2020-03-13', '19:00:00', 'Bagnolet', '92700', '6 rue du general leclerc', '0', NULL, 1, NULL, NULL),
-(34, 'ccccccc', '12 €', 'Récurrent', '2020-03-20', '12:12:00', 'j;', '427', 'gh,d', '0', NULL, 1, NULL, NULL),
-(35, 'Bouteille de champagne ', '150 €', 'Simple ', '2020-03-29', '21:00:00', 'Fecamp', '76400', 'Rue Gustave Couturier', '0', NULL, 1, NULL, NULL),
-(36, 'teest', '200 €', 'Récurrent', '2020-03-29', '23:00:00', 'Fecamp', '76400', 'Rue Gustave Couturier', '0', NULL, 1, NULL, NULL),
-(37, 'Baby-sitting ', '20 €', 'Simple ', '2020-03-29', '18:00:00', 'tata', '76400', 'Rue Gustave Couturier', '0', NULL, 1, NULL, NULL),
-(38, 'Bouteille de champagne ', '150 €', 'Simple ', '2020-04-23', '12:12:00', 'az', '74125', 'az', '0', NULL, 1, NULL, NULL),
-(39, 'Bouteille de champagne ', '150 €', 'Simple ', '2020-04-02', '20:00:00', 'Fecamp', '76400', 'Rue Gustave Couturier', '0', NULL, 1, NULL, NULL),
-(40, 'test6', '400 €', 'Récurrent', '2020-04-02', '21:00:00', 'Fecamp', '76400', 'Rue Gustave Couturier', '0', NULL, 1, NULL, NULL),
-(41, 'test5', '500 €', 'Récurrent', '1996-02-08', '05:06:00', 'Fecamp', '76400', 'Rue Gustave Couturier', '0', NULL, 0, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `demande_service`
---
-
-DROP TABLE IF EXISTS `demande_service`;
-CREATE TABLE IF NOT EXISTS `demande_service` (
-  `id_demande_service` int(11) NOT NULL AUTO_INCREMENT,
-  `id_demande` int(11) NOT NULL,
-  `id_service` int(11) NOT NULL,
-  PRIMARY KEY (`id_demande_service`)
-) ;
-
---
--- Déchargement des données de la table `demande_service`
---
-
-INSERT INTO `demande_service` (`id_demande_service`, `id_demande`, `id_service`) VALUES
-(1, 1, 1),
-(2, 2, 4),
-(3, 3, 1),
-(5, 18, 10),
-(6, 19, 3),
-(7, 24, 11),
-(8, 25, 11),
-(9, 26, 11),
-(10, 30, 11),
-(11, 31, 12),
-(14, 34, 16),
-(15, 35, 12),
-(16, 36, 17),
-(17, 37, 9),
-(18, 38, 12),
-(19, 39, 12),
-(20, 40, 18),
-(21, 41, 19);
+INSERT INTO `demandes` (`id_demandes`, `id_membre`, `nom_demande`, `nb_heure`, `taux_horaire`, `point_unite`, `prix_demande`, `point_demande`, `type_demande`, `date_demande`, `heure`, `ville`, `code_postal`, `adresse`, `statut_demande`, `id_intervenant_demande`, `ref_devis`, `ref_facture`, `statut_devis`, `refuser`, `id_service_membre`) VALUES
+(1, 7, 'test1', 15, NULL, 10, NULL, 150, 'perso', '2020-05-14', '12:12:00', 'pzp', '45154', '1545', '0', NULL, 'Devis1-01-05-2020.pdf', NULL, 0, 0, NULL),
+(2, 7, 'Cadeau', 1, NULL, 5, NULL, 5, 'perso', '2020-05-14', '12:12:00', 'pzp', '45154', '1545', '0', NULL, 'Devis1-01-05-2020.pdf', NULL, 0, 0, NULL),
+(3, 7, 'Visites d\'un proche (10 visites) ', 1, NULL, 35, NULL, 35, 'simple', '2020-05-23', '11:11:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis3-01-05-2020.pdf', 'Facture3-01-05-2020.pdf', 0, 0, 6),
+(4, 7, 'test2', 1, NULL, 200, NULL, 200, 'perso', '2020-05-21', '12:12:00', 'p', '4512', '45', '0', NULL, 'Devis4-01-05-2020.pdf', NULL, 0, 0, NULL),
+(5, 7, 'Papier', 1, NULL, 2, NULL, 2, 'perso', '2020-05-21', '12:12:00', 'p', '4512', '45', '0', NULL, 'Devis4-01-05-2020.pdf', NULL, 0, 0, NULL),
+(6, 7, 'test3', 1, NULL, 12, NULL, 12, 'perso', '2020-05-22', '12:12:00', 'pa', '45', '45', '0', NULL, '6-01-05-2020.pdf', NULL, 0, 0, NULL),
+(7, 7, 'p', 1, NULL, 5, NULL, 5, 'perso', '2020-05-22', '12:12:00', 'pa', '45', '45', '0', NULL, '6-01-05-2020.pdf', NULL, 0, 0, NULL),
+(8, 7, 'test5', 5, NULL, 1, NULL, 5, 'perso', '2020-05-05', '05:05:00', '5', '5', '5', '0', NULL, '8-01-05-2020.pdf', NULL, 0, 0, NULL),
+(9, 7, 'a', 4, NULL, 4, NULL, 16, 'perso', '2020-05-05', '05:05:00', '5', '5', '5', '0', NULL, 'Devis8-01-05-2020.pdf', NULL, 0, 0, NULL),
+(10, 7, '8', 8, NULL, 8, NULL, 64, 'perso', '2020-05-05', '05:05:00', '5', '5', '5', '0', NULL, 'Devis8-01-05-2020.pdf', NULL, 0, 0, NULL),
+(11, 7, 'y', 5, NULL, 5, NULL, 25, 'perso', '2020-05-05', '05:05:00', '5', '5', '5', '0', NULL, 'Devis8-01-05-2020.pdf', NULL, 0, 0, NULL),
+(12, 8, 'test prix', 2, 3, NULL, '5', NULL, 'perso', '2020-02-05', '12:01:00', 'p', 'p', 'p', '0', 'DBr_11922', 'Devis12-01-05-2020.pdf', 'Facture12-01-05-2020.pdf', 1, 0, NULL),
+(16, 8, 'p', 2, 2, NULL, '4', NULL, 'perso', '2020-02-05', '12:01:00', 'p', 'p', 'p', '0', 'DBr_11922', 'Devis12-01-05-2020.pdf', 'Facture12-01-05-2020.pdf', 1, 0, NULL),
+(17, 7, 'Récupération de paquets ', 1, NULL, 11, NULL, 11, 'simple', '2020-05-27', '11:11:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis17-01-05-2020.pdf', 'Facture17-01-05-2020.pdf', 0, 0, 5),
+(18, 7, 'Ordinateur ', 2, NULL, 50, NULL, 100, 'simple', '2020-02-19', '22:02:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis18-01-05-2020.pdf', 'Facture18-01-05-2020.pdf', 0, 0, 11),
+(19, 7, 'Ordinateur ', 5, NULL, 50, NULL, 250, 'simple', '2020-05-08', '04:44:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis19-01-05-2020.pdf', 'Facture19-01-05-2020.pdf', 0, 0, 11),
+(20, 7, 'Ordinateur ', 5, NULL, 50, NULL, 250, 'simple', '2020-05-08', '04:44:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis19-01-05-2020.pdf', 'Facture19-01-05-2020.pdf', 0, 0, 11),
+(21, 7, 'Visites d\'un proche (10 visites) ', 2, NULL, 35, NULL, 70, 'simple', '2020-05-01', '04:45:00', 'Paris', '76400', '37 rue des voucles', '0', NULL, 'Devis21-01-05-2020.pdf', 'Facture21-01-05-2020.pdf', 0, 0, 6),
+(22, 7, 'Ordinateur ', 10, NULL, 50, NULL, 500, 'simple', '2020-05-09', '12:12:00', 'Paris', '76400', '37 rue des voucles', '0', 'DBr_11922', 'Devis22-01-05-2020.pdf', 'Facture22-01-05-2020.pdf', 0, 0, 11),
+(25, 8, 'Ordinateur ', 10, 50, NULL, '500', NULL, 'simple', '2020-05-14', '11:11:00', '15', '1547', '15', '0', NULL, 'Devis23-01-05-2020.pdf', 'Facture23-01-05-2020.pdf', 0, 0, 11),
+(26, 8, 'Récupération de paquets ', 5, 11, NULL, '55', NULL, 'simple', '2020-05-10', '12:12:00', '15', '1547', '15', '0', 'DBr_11922', 'Devis26-01-05-2020.pdf', 'Facture26-01-05-2020.pdf', 0, 0, 5),
+(27, 7, 'Test valide', 1, NULL, 100, NULL, 100, 'perso', '2020-05-06', '11:11:00', 'jlj', '1424', 'jlijl', '0', NULL, 'Devis27-01-05-2020.pdf', 'Facture27-01-05-2020.pdf', 1, 0, NULL),
+(30, 7, 'Blou', 2, NULL, 5, NULL, 10, 'perso', '2020-05-06', '11:11:00', 'jlj', '1424', 'jlijl', '0', NULL, 'Devis27-01-05-2020.pdf', 'Facture27-01-05-2020.pdf', 1, 0, NULL),
+(31, 8, 'Test valide prix', 2, 110, NULL, '220', NULL, 'perso', '2020-05-12', '12:12:00', 'pa', '123', '123', '0', NULL, 'Devis31-02-05-2020.pdf', 'Facture31-02-05-2020.pdf', 1, 0, NULL),
+(32, 8, 'Truc', 1, 5, NULL, '5', NULL, 'perso', '2020-05-12', '12:12:00', 'pa', '123', '123', '0', NULL, 'Devis31-02-05-2020.pdf', 'Facture31-02-05-2020.pdf', 1, 0, NULL),
+(33, 7, 'GeneDevis', 12, NULL, 8, NULL, 100, 'perso', '2020-05-14', '12:12:00', 'pa', '45123', 'pa', '0', NULL, NULL, NULL, 0, 1, NULL),
+(34, 7, 'ez', 1, NULL, 42, NULL, 42, 'perso', '2020-05-14', '04:44:00', 'th', 'th', 'th', '0', NULL, 'Devis34-02-05-2020.pdf', NULL, 0, 0, NULL),
+(35, 7, 'salut', 1, NULL, 1, NULL, 1, 'perso', '2020-05-14', '04:44:00', 'th', 'th', 'th', '0', NULL, 'Devis34-02-05-2020.pdf', NULL, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,22 +127,24 @@ INSERT INTO `demande_service` (`id_demande_service`, `id_demande`, `id_service`)
 DROP TABLE IF EXISTS `info_abonnement`;
 CREATE TABLE IF NOT EXISTS `info_abonnement` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description1` text NOT NULL,
-  `description2` text NOT NULL,
-  `description3` text NOT NULL,
-  `nb_heure` int(11) NOT NULL,
+  `description1` text DEFAULT NULL,
+  `description2` text DEFAULT NULL,
+  `description3` text DEFAULT NULL,
+  `nb_point` int(11) NOT NULL,
   `type_abonnement` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ;
+  PRIMARY KEY (`id`),
+  KEY `id_type_abonnement` (`type_abonnement`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `info_abonnement`
 --
 
-INSERT INTO `info_abonnement` (`id`, `description1`, `description2`, `description3`, `nb_heure`, `type_abonnement`) VALUES
-(1, 'Bénéficiez d\'un accès privilégié en illimité 5j/7 de 9h à 20h ', 'Demandes illimitées de renseignements ', '12h de services/mois ', 12, 1),
-(4, 'Bénéficiez d\'un accès privilégié en illimité 6j/7 de 9h à 20h ', 'Demandes illimitées de renseignements ', '25h de services/mois ', 25, 2),
-(7, 'Bénéficiez d\'un accès privilégié en illimité 7j/7 24h/24', 'Demandes illimitées de renseignements ', '50h de services/mois', 50, 3);
+INSERT INTO `info_abonnement` (`id`, `description1`, `description2`, `description3`, `nb_point`, `type_abonnement`) VALUES
+(1, 'Bénéficiez d\'un accès privilégié en illimité 5j/7 de 9h à 20h ', 'Demandes illimitées de renseignements ', '2400 points', 2400, 1),
+(4, 'Bénéficiez d\'un accès privilégié en illimité 6j/7 de 9h à 20h ', 'Demandes illimitées de renseignements ', '3600 points', 3600, 2),
+(7, 'Bénéficiez d\'un accès privilégié en illimité 7j/7 24h/24', 'Demandes illimitées de renseignements ', '6000 points', 6000, 3),
+(10, 'Garder les même avantages que votre abonnement', 'Demandes illimitées de renseignements ', 'Un ajout de 100 points sera effectué sur votre compte', 100, 6);
 
 -- --------------------------------------------------------
 
@@ -201,19 +164,21 @@ CREATE TABLE IF NOT EXISTS `intervenant` (
   `adresse` varchar(46) NOT NULL,
   `nomQrCode` varchar(255) NOT NULL,
   `birthdate` date NOT NULL,
+  `valide` int(11) NOT NULL DEFAULT 0,
+  `mdp` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `intervenant`
 --
 
-INSERT INTO `intervenant` (`id`, `nom`, `prenom`, `mail`, `telephone`, `codepostal`, `ville`, `adresse`, `nomQrCode`, `birthdate`) VALUES
-('CCi_11999', 'Ciret', 'Corentin', 'corentin.cour@myges.fr', '0130260723', '95240', 'Coremeilles-en-Parisis', '30 rue germain-pilon', 'CiretCorentinCCi_11999Qr.bmp', '1999-11-17'),
-('DBr_11922', 'Briatte', 'Deelon', 'Sananes@esgi.fr', '0154646465', '71000', 'Paris', 'sdqsf', 'BriatteDelonDBr_11922Qr.bmp', '1922-01-17'),
-('DCo_11666', 'Colo', 'Detroi', 'ColoDetroi@gmail.com', '0165686978', '71001', 'ici', '30 rue de labas', 'ColoDetroiDCo_11666Qr.bmp', '1666-11-11'),
-('GVi_07999', 'Viot', 'Gabriel', 'test@test.fr', '0236598565', '75000', 'truc', 'truc', 'ViotGabrielGVi_07999Qr.bmp', '1999-07-05'),
-('MJe_11989', 'Ciret', 'Corentin', 'corentin.cour@myges.fr', '0130260723', '95240', 'Coremeilles-en-Parisis', '30 rue germain-pilon', 'JeanMichelleMJe_11989Qr.bmp', '1999-11-17');
+INSERT INTO `intervenant` (`id`, `nom`, `prenom`, `mail`, `telephone`, `codepostal`, `ville`, `adresse`, `nomQrCode`, `birthdate`, `valide`, `mdp`) VALUES
+('CCi_11999', 'Ciret', 'Corentin', 'corentin.cour@myges.fr', '0130260723', '95240', 'Coremeilles-en-Parisis', '30 rue germain-pilon', 'CiretCorentinCCi_11999Qr.bmp', '1999-11-17', 0, NULL),
+('DBr_11922', 'Briatte', 'Delon', 'Sananes@esgi.fr', '0154646465', '71000', 'Paris', 'sdqsf', 'BriatteDelonDBr_11922Qr.bmp', '1922-01-17', 0, NULL),
+('DCo_11666', 'Colo', 'Detroimp', 'ColoDetroi@gmail.com', '0165686978', '71001', 'ici', '30 rue de labas', 'ColoDetroiDCo_11666Qr.bmp', '1666-11-11', 0, NULL),
+('GVi_07999', 'Viot', 'Gabriel', 'test@test.fr', '0236598565', '75000', 'truc', 'truc', 'ViotGabrielGVi_07999Qr.bmp', '1999-07-05', 0, NULL),
+('MJe_11989', 'Ciret', 'Corentin', 'corentin.cour@myges.fr', '0130260723', '95240', 'Coremeilles-en-Parisis', '30 rue germain-pilon', 'JeanMichelleMJe_11989Qr.bmp', '1999-11-17', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -230,93 +195,54 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `email` varchar(120) NOT NULL,
   `pseudo` varchar(50) NOT NULL,
   `mdp` varchar(255) NOT NULL,
+  `adresse` varchar(200) NOT NULL,
+  `ville` varchar(100) NOT NULL,
   `code_postal` char(5) NOT NULL,
   `date_creation` date NOT NULL,
   `admin` tinyint(4) DEFAULT 0,
   `actif` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id_membre`)
-) ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `membre`
 --
 
-INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `date_naissance`, `email`, `pseudo`, `mdp`, `code_postal`, `date_creation`, `admin`, `actif`) VALUES
-(1, 'Admin', 'Admin', '1996-12-03', 'admin@hotmail.fr', 'Admin', '$2y$10$paJx9Mmh8pLFjc7GGrw8L.aB8zdhpe4pB2KPa11WvtntP9DBojkIq', '', '2020-03-01', 0, 0),
-(2, 'test', 'test', '2000-12-01', 'test@hotmail.fr', 'test', '$2y$10$t/IX8exW1tP/WCumUOyhn.y7uPZWRj/5zzLoP1YlGS0C..LqvExmq', '78410', '2020-03-01', 0, 0),
-(6, 'lalo', 'lilo', '1996-12-03', 'lolo@hotmail.fr', 'loupe', '$2y$10$p2QNMyM7YP7/l.q.5grMk.zfQ.NaJm1gEW5mBegpfMVk1KgPK8Lxu', '12458', '2020-03-18', 0, 0),
-(7, 'VIOT', 'Gab', '1999-07-05', 'gabriel76.viot@gmail.com', 'Admin1', '$2y$10$oHbF2X7N.c0SUrzvQbLpDe1B9bcazCjWY0MdCVYswg4jc4heft./i', '76400', '2020-03-29', 1, 0),
-(8, 'Aras', 'Lola', '1996-04-08', 'lola@gmail.com', 'Membre', '$2y$10$1k7WmyxsJ/bDIQCai1muReGR2pX2ZTdlLt88R/eOcIGgKaYXTBAhu', '78542', '2020-04-02', 0, 0),
-(9, 'azeeazeaz', 'mezaezaeaz', '1996-08-05', 'azezaeaze@gmail.com', 'test3', '$2y$10$DbcBB/uV8Exqyq9au/fvuOYUeJQTcrQXLHNDxuCqSM.iY8pJ2WwZe', '75652', '2020-04-03', 0, 0);
+INSERT INTO `membre` (`id_membre`, `nom`, `prenom`, `date_naissance`, `email`, `pseudo`, `mdp`, `adresse`, `ville`, `code_postal`, `date_creation`, `admin`, `actif`) VALUES
+(1, 'Admin', 'Admin', '1996-12-03', 'admin@hotmail.fr', 'Admin', '$2y$10$paJx9Mmh8pLFjc7GGrw8L.aB8zdhpe4pB2KPa11WvtntP9DBojkIq', '', '', '', '2020-03-01', 0, 0),
+(2, 'test', 'test', '2000-12-01', 'test@hotmail.fr', 'test', '$2y$10$t/IX8exW1tP/WCumUOyhn.y7uPZWRj/5zzLoP1YlGS0C..LqvExmq', '', '', '78410', '2020-03-01', 0, 0),
+(6, 'lalo', 'lilo', '1996-12-03', 'lolo@hotmail.fr', 'loupe', '$2y$10$p2QNMyM7YP7/l.q.5grMk.zfQ.NaJm1gEW5mBegpfMVk1KgPK8Lxu', '', '', '12458', '2020-03-18', 0, 0),
+(7, 'VIOT', 'Gab', '1999-07-05', 'gabriel76.viot@gmail.com', 'Admin1', '$2y$10$oHbF2X7N.c0SUrzvQbLpDe1B9bcazCjWY0MdCVYswg4jc4heft./i', '37 rue des voucles', 'Paris', '76400', '2020-03-29', 1, 0),
+(8, 'ccccc', 'ccccc', '1996-12-03', 'cc@hotmail.fr', 'ccccc', '$2y$10$OfAV4bIXt2VymmixVyouSOoEHbP/BIEEUJWVdLXj/10puMxxpYyX2', '15', '15', '1547', '2020-04-25', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membre_demande`
+-- Structure de la table `role`
 --
 
-DROP TABLE IF EXISTS `membre_demande`;
-CREATE TABLE IF NOT EXISTS `membre_demande` (
-  `id_membre_demande` int(11) NOT NULL AUTO_INCREMENT,
-  `id_demande` int(11) NOT NULL,
-  `id_membre` int(11) NOT NULL,
-  PRIMARY KEY (`id_membre_demande`),
-  KEY `id_membre` (`id_membre`),
-  KEY `id_demande` (`id_demande`)
-) ;
-
---
--- Déchargement des données de la table `membre_demande`
---
-
-INSERT INTO `membre_demande` (`id_membre_demande`, `id_demande`, `id_membre`) VALUES
-(1, 1, 1),
-(2, 1, 1),
-(3, 2, 1),
-(4, 14, 1),
-(5, 15, 1),
-(6, 16, 1),
-(7, 16, 1),
-(8, 17, 1),
-(9, 18, 1),
-(10, 19, 1),
-(11, 20, 1),
-(12, 21, 1),
-(13, 22, 1),
-(14, 23, 1),
-(15, 24, 1),
-(16, 25, 1),
-(17, 26, 1),
-(18, 27, 1),
-(19, 28, 1),
-(20, 29, 1),
-(21, 30, 1),
-(22, 31, 1),
-(25, 34, 1),
-(26, 35, 7),
-(27, 36, 7),
-(28, 37, 7),
-(29, 38, 7),
-(30, 39, 7),
-(31, 40, 7),
-(32, 41, 7);
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `id_role` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_role` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_role`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `paiement`
+-- Structure de la table `role_intervenant`
 --
 
-DROP TABLE IF EXISTS `paiement`;
-CREATE TABLE IF NOT EXISTS `paiement` (
-  `id_paiement` int(11) NOT NULL AUTO_INCREMENT,
-  `paiement_status` int(11) NOT NULL,
-  `paiement_ammount` int(11) NOT NULL,
-  `paiement_currency` int(11) NOT NULL,
-  `paiement_date` date NOT NULL,
-  `email_paiement` varchar(120) NOT NULL,
-  PRIMARY KEY (`id_paiement`)
-) ;
+DROP TABLE IF EXISTS `role_intervenant`;
+CREATE TABLE IF NOT EXISTS `role_intervenant` (
+  `id_role_intervenant` int(11) NOT NULL AUTO_INCREMENT,
+  `id_role` int(11) NOT NULL,
+  `id_intervenant` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_role_intervenant`),
+  KEY `id_role` (`id_role`),
+  KEY `id_intervenant` (`id_intervenant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -329,29 +255,29 @@ CREATE TABLE IF NOT EXISTS `services` (
   `id_services` int(11) NOT NULL AUTO_INCREMENT,
   `nom_service` varchar(60) NOT NULL,
   `tarif` int(11) NOT NULL,
-  `id_type_service` int(11) NOT NULL,
   `service_valide` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_services`)
-) ;
+  `id_role` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_services`),
+  KEY `id_role_service` (`id_role`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `services`
 --
 
-INSERT INTO `services` (`id_services`, `nom_service`, `tarif`, `id_type_service`, `service_valide`) VALUES
-(1, 'Jardinier', 20, 1, 1),
-(2, 'Ménage', 22, 1, 1),
-(3, 'Bricolage | Petits Travaux', 20, 1, 1),
-(4, 'Démarches Administratives ', 55, 1, 1),
-(5, 'Récupération de paquets', 11, 1, 1),
-(6, 'Visites d\'un proche (10 visites)', 35, 2, 1),
-(7, 'Ménages (25 commandes minimum)', 17, 2, 1),
-(8, 'Gardes d\'enfants', 20, 1, 1),
-(9, 'Baby-sitting', 20, 1, 1),
-(10, 'Gardes d\'animaux', 25, 1, 1),
-(11, 'Ordinateur', 50, 1, 1),
-(12, 'Bouteille de champagne', 150, 1, 1),
-(19, 'test5', 500, 2, 0);
+INSERT INTO `services` (`id_services`, `nom_service`, `tarif`, `service_valide`, `id_role`) VALUES
+(1, 'Jardinier', 20, 1, NULL),
+(2, 'Ménage', 22, 1, NULL),
+(3, 'Bricolage | Petits Travaux', 20, 1, NULL),
+(4, 'Démarches Administratives ', 55, 1, NULL),
+(5, 'Récupération de paquets', 11, 1, NULL),
+(6, 'Visites d\'un proche (10 visites)', 35, 1, NULL),
+(7, 'Ménages (25 commandes minimum)', 17, 1, NULL),
+(8, 'Gardes d\'enfants', 20, 1, NULL),
+(9, 'Baby-sitting', 20, 1, NULL),
+(10, 'Gardes d\'animaux', 25, 1, NULL),
+(11, 'Ordinateur', 50, 1, NULL),
+(12, 'Bouteille de champagne', 150, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -365,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `type_abonnement` (
   `nom` varchar(120) NOT NULL,
   `prix` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `type_abonnement`
@@ -374,28 +300,46 @@ CREATE TABLE IF NOT EXISTS `type_abonnement` (
 INSERT INTO `type_abonnement` (`id`, `nom`, `prix`) VALUES
 (1, 'Abonnement de base', 240000),
 (2, 'Abonnement Familial', 360000),
-(3, 'Abonnement Prenium', 600000);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `type_service`
---
-
-DROP TABLE IF EXISTS `type_service`;
-CREATE TABLE IF NOT EXISTS `type_service` (
-  `id_type` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_type` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_type`)
-) ;
+(3, 'Abonnement Prenium', 600000),
+(6, 'Pack n°1', 20000);
 
 --
--- Déchargement des données de la table `type_service`
+-- Contraintes pour les tables déchargées
 --
 
-INSERT INTO `type_service` (`id_type`, `nom_type`) VALUES
-(1, 'Simple'),
-(2, 'Récurrent');
+--
+-- Contraintes pour la table `abonnement_test`
+--
+ALTER TABLE `abonnement_test`
+  ADD CONSTRAINT `id_membre_abonnement` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`id_membre`),
+  ADD CONSTRAINT `type_abonnement_test` FOREIGN KEY (`type_abonnement`) REFERENCES `type_abonnement` (`id`);
+
+--
+-- Contraintes pour la table `demandes`
+--
+ALTER TABLE `demandes`
+  ADD CONSTRAINT `id_intervenant_1` FOREIGN KEY (`id_intervenant_demande`) REFERENCES `intervenant` (`id`),
+  ADD CONSTRAINT `id_membre1` FOREIGN KEY (`id_membre`) REFERENCES `membre` (`id_membre`),
+  ADD CONSTRAINT `id_service_membre` FOREIGN KEY (`id_service_membre`) REFERENCES `services` (`id_services`);
+
+--
+-- Contraintes pour la table `info_abonnement`
+--
+ALTER TABLE `info_abonnement`
+  ADD CONSTRAINT `id_type_abonnement` FOREIGN KEY (`type_abonnement`) REFERENCES `type_abonnement` (`id`);
+
+--
+-- Contraintes pour la table `role_intervenant`
+--
+ALTER TABLE `role_intervenant`
+  ADD CONSTRAINT `id_intervenant` FOREIGN KEY (`id_intervenant`) REFERENCES `intervenant` (`id`),
+  ADD CONSTRAINT `id_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`);
+
+--
+-- Contraintes pour la table `services`
+--
+ALTER TABLE `services`
+  ADD CONSTRAINT `id_role_service` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
