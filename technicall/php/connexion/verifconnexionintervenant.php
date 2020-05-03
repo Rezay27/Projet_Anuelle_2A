@@ -2,7 +2,7 @@
 session_start();
 include('../include/connect_bdd.php');
 //  Récupération de l'utilisateur et de son pass hashé
-if(isset($_POST['formconnect'])){
+if (isset($_POST['formconnect'])) {
 
     $email = htmlspecialchars($_POST['emailconnect']);
 
@@ -14,28 +14,41 @@ if(isset($_POST['formconnect'])){
 
 
     // Comparaison du pass envoyé via le formulaire avec la base
+    if ($resultat['valide'] == 0) {
+        if ($_POST['mdpconnect'] == $resultat['mdp']) {
+            $_SESSION['id_inter'] = $resultat['id'];
+            $_SESSION['email'] = $email;
+            header("Location:changermdpintervenantnew.php?id={$_SESSION['id_inter']}");
 
-    if ($_POST['mdpconnect'] == $resultat['mdp']) {
-        $_SESSION['id'] = $resultat['id'];
-        $_SESSION['email'] = $email;
-        if($resultat['valide']==0) {
-            header("Location:changermdpintervenantnew.php?id={$_SESSION['id']}");
-        }else{
-            header("Location:../index/index.php");
+        } else {
 
+            ?>
+            <script type="text/javascript">
+                alert("Mauvais identifiant ou mot de passe !");
+                document.location.href = 'connexionintervenant.php';
+            </script>
+            <?php
         }
+    } else {
+        $isPasswordCorrect = password_verify($_POST['mdpconnect'], $resultat['mdp']);
+
+        if ($isPasswordCorrect) {
+            $_SESSION['id_inter'] = $resultat['id'];
+            $_SESSION['email'] = $email;
+            header("Location:../index/index.php");
+        }else {
+
+            ?>
+            <script type="text/javascript">
+                alert("Mauvais identifiant ou mot de passe !");
+                document.location.href = 'connexionintervenant.php';
+            </script>
+            <?php
+        }
+
     }
 
-    else
-    {
 
-        ?>
-        <script type="text/javascript">
-            alert("Mauvais identifiant ou mot de passe !");
-            document.location.href = 'connexionintervenant.php';
-        </script>
-        <?php
-    }
 }
 
 ?>

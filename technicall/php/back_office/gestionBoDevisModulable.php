@@ -131,6 +131,44 @@ $tva = $prix_total - $prix_ht;
             </form>
             <div class="divvalidedevis">
                 <?php if($demande['ref_devis']==null){?>
+                    <?php
+                    $to = 'oceane.renoux@hotmail.fr';
+                    $subject = 'Devis à accepter';
+                    $boundary = md5(uniqid(microtime(), TRUE));
+                    $headers .= 'Mime-Version: 1.0'."\r\n";
+                    $headers .= 'Content-Type: multipart/mixed;boundary='.$boundary."\r\n";
+                    $headers .= "\r\n";
+
+                    $msg = 'Pouvez vous valider votre devis n°'.$demande['ref_devis'].' si il vous convient : .'."\r\n\r\n";
+
+                    $msg .= '--'.$boundary."\r\n";
+                    $msg .= 'Content-type:text/plain;charset=utf-8'."\r\n";
+                    $msg .= 'Content-transfer-encoding:8bit'."\r\n";
+                    $msg .= 'Veuillez vous rendre a l\'adresse suivante : .'."\r\n";
+                    $msg .= '<a href="http://localhost/technicall/php/demande_service/acceptedemandeperso.php?devis='.$demande['ref_devis'].'.pdf&id='.$demande['id_membre'].'"> Lien à suivre </a>';
+                    $msg .= '<h3>Merci ! </h3>';
+                    $file_name = '../../images/DevisPerso/'.$demande['ref_devis'];
+                    if (file_exists($file_name))
+                    {
+                        $file_type = filetype($file_name);
+                        $file_size = filesize($file_name);
+
+                        $handle = fopen($file_name, 'r') or die('File '.$file_name.'can t be open');
+                        $content = fread($handle, $file_size);
+                        $content = chunk_split(base64_encode($content));
+                        $f = fclose($handle);
+
+                        $msg .= '--'.$boundary."\r\n";
+                        $msg .= 'Content-type:'.$file_type.';name='.$file_name."\r\n";
+                        $msg .= 'Content-transfer-encoding:base64'."\r\n";
+                        $msg .= $content."\r\n";
+                    }
+
+                    $msg .= '--'.$boundary."\r\n";
+
+                    mail($to, $subject, $msg, $headers);
+
+                    ?>
                     <a style="pointer-events: none;" class="validedevis" href="gestionBoDemandesPerso.php?devis=ok">Valider </a>
                 <?php } else { ?>
                 <a class="validedevis" href="gestionBoDemandesPerso.php?devis=ok">Valider </a>
