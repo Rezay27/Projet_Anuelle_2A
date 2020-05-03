@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('../include/connect_bdd.php');
-$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,18 +18,21 @@ $id = $_GET['id'];
     <div>
         <h1 class="bloc1">Changer le mot de passe</h1>
         <section class="bloc1">
-            <form action="changermdpintervenantnewverif.php?id=<?=$id?>" method="post">
+            <form action="verifconnexionintervenant.php" method="post">
                 <div>
                     <label>Nouveau Mot de passe</label>
-                    <input type="password" name="password" placeholder="Mot de passe">
+                    <input type="text" name="emailconnect" placeholder="Email"
+                           value="<?php if (isset($emailconnect)) {
+                               echo $emailconnect;
+                           } ?>">
                 </div>
                 <div>
                     <label>Nouveau Mot de passe</label>
-                    <input type="password" name="password_conf" placeholder="Confirmer le mot de passe">
+                    <input type="password" name="mdpconnect" placeholder="Mot de passe">
                 </div>
                 <div>
                     <label for=""></label>
-                    <input class="submit" type="submit" value="Connexion" name="changemdpnew">
+                    <input class="submit" type="submit" value="Connexion" name="formconnect">
                 </div>
             </form>
 

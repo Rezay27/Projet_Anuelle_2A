@@ -27,7 +27,7 @@ include('../include/connect_bdd.php');
                            } ?>">
                 </div>
                 <div>
-                    <label>Mot de passe</label>
+                    <label>Mot de passe reçu par mail</label>
                     <input type="password" name="mdpconnect" placeholder="Mot de passe">
                 </div>
                 <div>

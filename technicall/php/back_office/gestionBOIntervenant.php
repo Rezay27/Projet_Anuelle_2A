@@ -141,16 +141,6 @@ if ($admin['admin'] == 1) {
                                             $mdp = genererChaineAleatoire();
                                             $update = $bdd->prepare('update intervenant set mdp=? where id = ? ');
                                             $update->execute(array($mdp,$id));
-                                            $msg = '<p>Bonjour '. $member1['prenom'].', afin de compléter la procédure d\'enregistrement sur notre site : veuillez vous rendre sur ce lien : </p><br>';
-                                            $msg .= '<a href="http://localhost/technicall/php/connexion/connexionIntervenant.php">Lien </a><br>';
-                                            $msg .= '<p>Votre mot de passe de connexion est le suivant : <strong> '. $mdp .'</strong></p><br>';
-                                            $msg .= '<p>Il vous sera demander de changer de mot de passe a votre première connexion</p>';
-                                            $msg .= '<h3>Merci d\'avoir rejoint la communauté ! </h3>';
-                                            $headers  = 'MIME-Version: 1.0' . "\r\n";
-                                            $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-
-                                            // send email
-                                            mail("oceane.renoux@hotmail.fr","Finalisation d'inscription",$msg,$headers);
                                             header('Location:gestionBOIntervenant.php?');
                                         }?>
                                     <td><input formaction="gestionBOIntervenant.php?id=<?= $member1['id']; ?>"
