@@ -62,7 +62,6 @@ if(isset($_POST['Modifier'])) {
     <section>
       <div class="divBO">
         <section  class="bloc1BO">
-          <a href="export.php">Exporter la liste</a>
           <h3 > Membres présents </h3>
           <?php
           $admin= 1;
@@ -140,7 +139,12 @@ if(isset($_POST['Modifier'])) {
                     $hour_member = $crea['hour_member'];
                   }?>
                   <td > <?php echo $day_member.'/'.$month_member.'/'.$crea['year_member']; ?> </td>
-                  <td></td>
+                  <?php
+                  $abonnement = $bdd->prepare('select * from abonnement_test where id_membre = ? ');
+                  $abonnement->execute(array($member1['id_membre']));
+                  $abonnements= $abonnement->fetch()
+                  ?>
+                  <td><input class="modifie" type="text" name="" value="<?php if(isset($abonnements['id_membre'])){ echo 'Abonné'; }else{ echo 'Non abonné ';}?>"></td>
                   <td> <a href="gestionBOMembre.php?admin=<?= $member1['id_membre'];?>"> Add Admin </a> </td>
                   <?php if(isset($_GET['admin'])AND !empty($_GET['admin'])){
                     $id= htmlspecialchars((int) $_GET['admin']);

@@ -9,16 +9,31 @@ if (isset($_GET['refuser'])) {
         $id = $_GET['id'];
         $refuser = $_GET['refuser'];
 
-            $modif_info = $bdd->prepare("update demandes set refuser = ? where id_demandes = ? ");
-            $modif_info->execute(array($refuser, $id));
+        $modif_info = $bdd->prepare("update demandes set refuser = ? where id_demandes = ? ");
+        $modif_info->execute(array($refuser, $id));
+
+        $selectdemande = $bdd -> prepare('select * from demandes where id_demandes = ? ');
+        $selectdemande->execute(array($id));
+        $demande = $selectdemande->fetch();
+
+        $msg = '<p>Bonjour , votre demande n° '.$demande['id_demandes'].' concernant : "'. $demande['nom_demande'] .'" a été refusé. </p><br>';
+        $msg .= '<p>Les raison sont les suivantes : <br><strong> - Elle ne corresponds pas a la charte  <br> - Elle n\'est pas conforme <br>   </strong></p><br>';
+        $msg .= '<p>Vous pouvez tout de fois refaire une demande avec un autre service</p>';
+        $msg .= '<h3>Bonne journée ! </h3>';
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+
+        // send email
+        mail("gabriel76.viot@gmail.com", "Demande refusée", $msg, $headers);
+
 
         header('Location:gestionBoDemandesPerso.php?refuser=ok');
 
     }
 }
 
-$nb_affectation = $bdd ->query('SELECT id_demandes from demandes where statut_demande = 0 AND type_demande = \'perso\'  AND id_intervenant_demande is null and ref_devis is not null and statut_devis=1 and date_demande > now() group by ref_devis ');
-$nb_affect = $nb_affectation->rowCount() ;
+$nb_affectation = $bdd->query('SELECT id_demandes from demandes where statut_demande = 0 AND type_demande = \'perso\'  AND id_intervenant_demande is null and ref_devis is not null and statut_devis=1 and date_demande > now() group by ref_devis ');
+$nb_affect = $nb_affectation->rowCount();
 
 
 ?>
@@ -45,7 +60,7 @@ $nb_affect = $nb_affectation->rowCount() ;
                 <span class="deroulelisteperso">
                     <select onChange='change(this)' class='selectperso'>
            <option value"">Choisir une page</option>
-            <option value='gestionBoDemandesPersoEnAttenteA.php'>Demande en attente d'affectation (<?php echo $nb_affect ?>) </option>
+                        <option value='gestionBoDemandesPersoEnAttenteA.php'>Demande en attente d'affectation (<?php echo $nb_affect ?>) </option>
             <option value='gestionBoDemandesPersoEnAttenteC.php'>Demande en attente de validation</option>
            <option value='gestionBoDemandesPersoEnCours.php'>Demande en cours</option>
             </select>
@@ -105,10 +120,10 @@ $nb_affect = $nb_affectation->rowCount() ;
                                                                                               value="<?php echo $demandes['heure'] ?>">
                             </td>
                             <td><a href="gestionBoDevisModulable.php?demande=<?= $demandes['id_demandes'] ?>"
-                                    > Générer le devis </a></td>
+                                > Générer le devis </a></td>
                             <td>
                                 <a href="gestionBoDemandesPerso.php?id=<?= $demandes['id_demandes'] . "&refuser=1"; ?>"
-                                   name="refuser" >Refuser</a></td>
+                                   name="refuser">Refuser</a></td>
                         </tr>
                     </form>
                 <?php } ?>

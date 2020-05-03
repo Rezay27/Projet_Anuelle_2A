@@ -24,7 +24,7 @@ include('../include/connect_bdd.php');
     <?php include('gestionBomenue.php'); ?>
     <div class="divBO">
         <section  class="bloc1BO">
-            <h3> Demandes en attente d'affactation </h3>
+            <h3> Demandes en attente d'affectation </h3>
             <?php
             $demande = $bdd ->query ("SELECT id_demandes,id_membre,date_demande,heure,ville,code_postal,adresse,ref_devis,ref_facture, sum(point_demande) as point_demande FROM `demandes` where statut_demande = 0 AND id_intervenant_demande is null AND type_demande='simple' AND point_demande is not null and date_demande > now() GROUP BY ref_devis  ");
             ?>

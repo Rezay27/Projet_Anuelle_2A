@@ -18,12 +18,19 @@
 <body>
 <?php  include('../include/header.php');
 
+
+if (isset($_GET['inscri']) && $_GET['inscri'] == 'ok') {
+    echo '<p style=\'color : green;font-size: 40px;text-align: center \'> Vous êtes bien insrit ! </p>';
+}
+
+
 if(isset($_SESSION['id'])){ ?>
 
 
 
+
     <section class="bloc1">
-        <h1>Site en construction ! </h1>
+        <h1>Bienvenue sur le site ! </h1>
     </section><br>
 
 <?php }?>

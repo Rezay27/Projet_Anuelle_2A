@@ -61,9 +61,9 @@ $abonnement_exist = $abonnement ->fetch();
 <div class="bloc1">
     <h3>Devis n° <?php echo $last_devis ?> </h3>
     <form action="devis_pdf.php?tableau=<?= $tableau ?>&id=10" enctype="multipart/form-data" method="post" id="envoie_devis">
-        <p><?php echo $membre_info['nom'] . ' ' . $membre_info['prenom'] . '<br>' . $adresse . ' - ' . $cp . '<br>' . $ville ?></p>
+        <p>Client : <?php echo $membre_info['nom'] . ' ' . $membre_info['prenom'] . '<br>Adresse : ' . $adresse . ' - ' . $cp . '<br> Ville : ' . $ville ?></p>
         <p> Date et Heure de l'intervention : <?php echo $date_demande . ' à ' . $time ?></p>
-        <p> Info complémentaire : <?php echo $description ?> </p>
+        <p> Informations complémentaires : <?php echo $description ?> </p>
         <!-- DEBUT AFFICHAGE SERVICE -->
         <table id="info_devis">
             <tr>
@@ -102,7 +102,7 @@ $abonnement_exist = $abonnement ->fetch();
         <table>
             <?php if(isset($abonnement_exist['id_membre'])){?>
             <tr>
-                <th>Total points</th>
+                <th>Prix total à payer</th>
                 <td> <?php echo $prix_total . ' points ' ?></td>
             </tr>
                 <tr>
@@ -111,7 +111,7 @@ $abonnement_exist = $abonnement ->fetch();
                 </tr>
             <?php }else {?>
             <tr>
-                <th>Total TTC</th>
+                <th>Prix total à payer</th>
                 <td> <?php echo $prix_total . ' € ' ?></td>
             </tr>
             <tr>
@@ -155,7 +155,7 @@ $abonnement_exist = $abonnement ->fetch();
     </form>
 
 
-    <a href="devis_client.php?tableau=<?= $tableau;?>" >Save PDF </a>
+    <a href="devis_client.php?tableau=<?= $tableau;?>" >Enregistrer au format PDF </a>
 </div>
 
 

@@ -23,21 +23,6 @@ echo $chemin;*/ ?>
     <h1 class="bloc1">Inscription</h1>
     <section class="bloc1" >
       <form id="inscription" action="verifinscription.php" name="inscription" method="post" enctype="multipart/form-data" onsubmit="return verifF(this)" type="formulaire">
-        <div>
-          <label class="civi">Civilite</label>
-          <div class="element">
-            <input id="homme"class="civility" name="civility" value ="1"   type="radio" value="<?php if(isset($_POST['civility']) && $_POST['civility']!="" ) echo $_POST['civility'];?>" />
-            <label class="radio" for="homme">Homme</label>
-          </div>
-          <div class="element">
-            <input id="femme" class="civility" name="civility" value="0"  type="radio" value="<?php if(isset($_POST['civility']) && $_POST['civility']!="" ) echo $_POST['civility'];?>" checked/>
-            <label class="radio"for="femme">Femme</label>
-          </div>
-          <div class="element">
-            <input id="nongenre" class="civility" name="civility" value="2"  type="radio" value="<?php if(isset($_POST['civility']) && $_POST['civility']!="" ) echo $_POST['civility'];?>" checked/>
-            <label class="radio"for="nongenre">Non genré</label>
-          </div>
-        </div>
         <!-- Pseudo -->
         <div>
           <label for="pseudo">Pseudo </label>
@@ -94,7 +79,7 @@ echo $chemin;*/ ?>
           <div class="">
               <label for="code_postal">Code Postal</label>
               <span id="erreur8"></span></br>
-              <input onblur="verifCode(this)" id="code_postal" type="text" name="code_postal" placeholder="Code Postal"/>
+              <input onblur="verifCp(this)" id="code_postal" type="text" name="code_postal" placeholder="Code Postal"/>
           </div>
             <!-- Condition utilisation -->
             <div class="element_coche">

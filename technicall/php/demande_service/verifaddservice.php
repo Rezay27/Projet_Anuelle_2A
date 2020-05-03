@@ -30,7 +30,7 @@ if(isset($_POST['abo_valider']))
         "intervenant" => NULL
     ));
 
-    header('Location:DemandeService.php?ok=sucess');
+    header('Location:DemandeService.php?ok=sucessperso');
 
 
 }
@@ -64,7 +64,7 @@ if(isset($_POST['nonabo_valider']))
         "intervenant" => NULL
     ));
 
-    header('Location:DemandeService.php?ok=sucess');
+    header('Location:DemandeService.php?ok=sucessperso');
 
 
 }

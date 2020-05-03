@@ -10,6 +10,10 @@
           <a href ="gestionBOService.php"> Gestion Services</a>
           <a class="couleurBarre"> | </a>
           <a href ="gestionBOAbonnement.php">Gestion Abonnement </a>
+          <a class="couleurBarre"> | </a>
+          <a href ="gestionBoAttributionRoleIntervenant.php">Gestion Attribition des rôles </a>
+          <a class="couleurBarre"> | </a>
+          <a href ="gestionBoRole.php">Gestion Rôle </a>
       </section>
     </section>
 </section>

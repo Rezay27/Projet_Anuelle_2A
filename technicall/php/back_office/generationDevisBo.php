@@ -75,6 +75,7 @@ if (isset($abonnement_exist['id_membre'])) {
         "statut_demande" => 0,
         "ref_devis" => 'Devis'.$devis
     ));
+
 }else {
     $insertinfisup = $bdd->prepare('insert into demandes(id_membre,nom_demande,nb_heure,taux_horaire,prix_demande,type_demande,date_demande,heure,ville,code_postal,adresse,statut_demande,ref_devis) value (:id_membre,:nom_demande,:nb_heure,:taux_horaire,:prix_demande,:type_demande,:date_demande,:heure,:ville,:code_postal,:adresse,:statut_demande,:ref_devis)');
     $insertinfisup->execute(array(
@@ -92,8 +93,10 @@ if (isset($abonnement_exist['id_membre'])) {
         "statut_demande" => 0,
         "ref_devis" => 'Devis'.$devis
     ));
+
 }
 }
+header('Location:gestionBoDevisModulable.php?demande='.$id);
 
 ?>
 <style type="text/css">

@@ -21,20 +21,19 @@ require_once "configPay.php";
 <body>
 <?php include('../include/header.php'); ?>
 <div id="searchDS">
-    <a href="acceptedemandeperso.php?devis=Devis31-02-05-2020.pdf&id=8">Valider devis</a>
-    <h3>Chercher un Service</h3>
+    <h3>Vous cherchez un service ?</h3>
 
     <?php
     if (isset($_GET['demande']) && $_GET['demande'] == 1) {
-        echo '<p style=\'color : green \'> La demande a bien été envoyée ! </p>';
+        echo '<p style=\'color : green ; font-size: 20px \'> La demande a bien été envoyée ! </p>';
     }
 
     if (isset($_GET['ok']) && $_GET['ok'] == 'sucess') {
-        echo '<p style=\'color : green \'> La demande a bien été envoyée ! </p>';
-        $tableau = $_GET['tableau'];
-        echo ' <a href="facture_pdf.php?tableau=<?=$tableau; ?>"> Télécharger la facture </a>';
+        echo '<p style=\'color : green ;font-size: 20px;text-align: center\'> La demande a bien été envoyée, elle sera traitée dans les plus brefs délais  ! </p>';
     }
-
+    if (isset($_GET['ok']) && $_GET['ok'] == 'sucessperso') {
+        echo '<p style=\'color : green ;font-size: 20px;text-align: center\'> La demande a été prise en compte, un devis vous sera envoyé dans les plus brefs délais ! </p>';
+    }
     if (isset($_GET['ok']) && $_GET['ok'] == 'nbpointneg') {
         echo '<p style=\'color : red \'> Vous n\'avez pas suffisament de point <a href="../stripe/abonnement.php">Reprendre des points !</a></p>';
     }
@@ -99,7 +98,7 @@ require_once "configPay.php";
 
     <!-- POP UP INFO CLIENT -->
     <div class="blocpopup" id="popupinfo">
-        <h3>Information complémentaire</h3>
+        <h3>Informations complémentaires</h3>
         <form id="form_info" action="devis.php" name="info_client" method="post" enctype="multipart/form-data" class="payer">
             <label>Adresse :</label>
             <input type="text" name="adresse_client" placeholder="Adresse" value="<?php echo $membre_info["adresse"]?>">
@@ -108,7 +107,7 @@ require_once "configPay.php";
             <label> Ville : </label>
             <input type="text" name="ville_client" placeholder="Ville" value="<?php echo $membre_info['ville']?>">
             <label> Date :</label>
-            <input type="date" name="date_client">
+            <input  type="date" name="date_client">
             <label> Heure : </label>
             <input type="time" name="time_client">
             <label>Description : </label>
@@ -136,10 +135,10 @@ require_once "configPay.php";
              <label>Prix souhaitez /h (point):</label>
              <input type="number" name="addtarif" placeholder="Prix Souhaitez">
             <?php }else { ?>
-            <label>Prix souhaitez /h :</label>
+            <label>Prix souhaité:</label>
             <input type="number" name="addtarif" placeholder="Prix Souhaitez">
             <?php } ?>
-            <label> Nombre d'heure :</label>
+            <label> Nombre d'heure / Quantité:</label>
             <input type="number" name="nb_heure">
             <label>Ville :</label>
             <input name="addville" type="text" placeholder="Ville">
@@ -167,7 +166,7 @@ require_once "configPay.php";
     <!--Pop up nb_heure inssufisante -->
     <?php if (isset($_GET['nb_heure']) && $_GET['nb_heure'] == 'neg') { ?>
         <div class="blocpopup_errreur">
-            <h3>Vous ne disposez pas d'un nombre d'heure suffisant !</h3>
+            <h3>Vous ne disposez pas d'un nombre de point suffisant !</h3>
             <a href="../stripe/abonnement.php" name="new_abonnement" class="button_erreur_heure submitservice">Passer a
                 l'abonnement supérieur</a>
             <a href="#" name="payer_comptant" class="button_erreur_heure submitservice">Payer le service au prix

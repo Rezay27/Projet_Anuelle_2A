@@ -122,8 +122,12 @@ if($admin['admin']==1){
                                     $hour_member = $crea['hour_member'];
                                 }?>
                                 <td > <?php echo $day_member.'/'.$month_member.'/'.$crea['year_member']; ?> </td>
-                                <td></td>
-                                <td> <a href="gestionBOAdmin.php?admin=<?= $member1['id_membre'];?>"> Delete Admin </a> </td>
+                                <?php
+                                $abonnement = $bdd->prepare('select * from abonnement_test where id_membre = ? ');
+                                $abonnement->execute(array($member1['id_membre']));
+                                $abonnements= $abonnement->fetch()
+                                ?>
+                                <td><input class="modifie" type="text" name="" value="<?php if(isset($abonnements['id_membre'])){ echo 'Abonné'; }else{ echo 'Non abonné ';}?>"></td>                                <td> <a href="gestionBOAdmin.php?admin=<?= $member1['id_membre'];?>"> Delete Admin </a> </td>
                                 <?php if(isset($_GET['admin'])AND !empty($_GET['admin'])){
                                     $id= htmlspecialchars((int) $_GET['admin']);
 

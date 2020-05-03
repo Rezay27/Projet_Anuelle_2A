@@ -25,7 +25,7 @@ include('../include/connect_bdd.php');
     <section>
         <div class="divBO">
             <section  class="bloc1BO">
-                <h3> Historiques </h3>
+                <h3> Historique </h3>
                 <?php
                 $demande = $bdd ->prepare ("SELECT * FROM `demandes` where date_demande < now() group by ref_devis ");
                 $demande ->execute(array());
@@ -88,7 +88,7 @@ include('../include/connect_bdd.php');
                 </table>
             </section>
             <section  class="bloc1BO">
-                <h3> Demande refusée </h3>
+                <h3> Demandes refusées </h3>
                 <?php
                 $demande = $bdd ->query ("SELECT * from demandes where refuser = 1");
 

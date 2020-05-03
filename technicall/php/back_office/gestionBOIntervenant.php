@@ -104,7 +104,6 @@ if ($admin['admin'] == 1) {
                             <th> Date Anniverssaire</th>
                             <th> Nom QrCode</th>
                             <th> Valider</th>
-                            <th> Modifier</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -141,10 +140,18 @@ if ($admin['admin'] == 1) {
                                             $mdp = genererChaineAleatoire();
                                             $update = $bdd->prepare('update intervenant set mdp=? where id = ? ');
                                             $update->execute(array($mdp,$id));
+                                            $msg = '<p>Bonjour '. $member1['prenom'].', afin de compléter la procédure d\'enregistrement sur notre site : veuillez vous rendre sur ce lien : </p><br>';
+                                            $msg .= '<a href="http://localhost/technicall/php/connexion/connexionIntervenant.php">Lien </a><br>';
+                                            $msg .= '<p>Votre mot de passe de connexion est le suivant : <strong> '. $mdp .'</strong></p><br>';
+                                            $msg .= '<p>Il vous sera demander de changer de mot de passe a votre première connexion</p>';
+                                            $msg .= '<h3>Merci d\'avoir rejoint la communauté ! </h3>';
+                                            $headers  = 'MIME-Version: 1.0' . "\r\n";
+                                            $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+
+                                            // send email
+                                            mail("gabriel.viot76@gmail.com","Finalisation d'inscription",$msg,$headers);
                                             header('Location:gestionBOIntervenant.php?');
                                         }?>
-                                    <td><input formaction="gestionBOIntervenant.php?id=<?= $member1['id']; ?>"
-                                               type="submit" name="Modifier" value="Modifier *"></td>
                                 </tr>
                             </form>
                             <?php
@@ -154,7 +161,7 @@ if ($admin['admin'] == 1) {
                     <p>* Pour modifier un intervenant , changer la valeur du champs puis cliquer sur modifier</p>
                 </section>
                 <section class="bloc1BO">
-                    <h3> Intervenants </h3>
+                    <h3> Intervenants validés </h3>
                     <?php
                     $i = 0;
                     $member = $bdd->query("SELECT * FROM intervenant where valide = 1");
@@ -197,7 +204,6 @@ if ($admin['admin'] == 1) {
                             <th> Adresse</th>
                             <th> Date Anniverssaire</th>
                             <th> Nom QrCode</th>
-                            <th> Modifier</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -222,8 +228,6 @@ if ($admin['admin'] == 1) {
                                                value="<?php echo $member1['birthdate'] ?>"></td>
                                     <td><input class="modifie" type="text" name="Qrcodemodif"
                                                value="<?php echo $member1['nomQrCode'] ?>"></td>
-                                    <td><input formaction="gestionBOIntervenant.php?id=<?= $member1['id']; ?>"
-                                               type="submit" name="Modifier" value="Modifier *"></td>
                                 </tr>
                             </form>
                             <?php

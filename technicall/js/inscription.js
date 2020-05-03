@@ -200,6 +200,26 @@ function verifBox (champ)
   }
 }
 
+//-----------------Verif cp ----------------
+function verifCp(champ)
+{
+  var regex = new RegExp("^[0-9]{5}$","g");
+  if(!regex.test(champ.value))
+  {
+    surligne(champ, true);
+    document.getElementById("erreur8").innerHTML ='Le code postal doit contenir 5 numeros!';
+    return false;
+
+  }
+  else
+  {
+    surligne(champ, false);
+    document.getElementById("erreur8").innerHTML ='';
+    return true;
+
+
+  }
+}
 
 //--------------- Verification total ------------
 
@@ -214,11 +234,10 @@ function verifF(f)
   var mdp2Ok = verifMdp2(f.conf_password);
   var checkOk = verifBox(f.condition);
   var birthOk = verifBirth(f.date_naissance);
-  var telOk = verifTel(f.telephone);
+  var cpOk = verifCp(f.code_postal);
 
 
-
-  if(telOk == true && nomOk == true && prenomOk == true && birthOk == true && checkOk == true && pseudoOk == true && mailOk == true && mail2Ok == true && mdpOk == true && mdp2Ok == true)
+  if(cpOk == true && nomOk == true && prenomOk == true && birthOk == true && checkOk == true && pseudoOk == true && mailOk == true && mail2Ok == true && mdpOk == true && mdp2Ok == true)
   {
     return true;
   }

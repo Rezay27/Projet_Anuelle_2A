@@ -38,7 +38,7 @@ if(isset($_POST['valider']))
       );
           }
 
-      header('Location:../index/index.php');
+      header('Location:../index/index.php?inscri=ok');
     }
 
 

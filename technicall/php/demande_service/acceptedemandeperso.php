@@ -13,7 +13,7 @@ if(isset($_GET["devis"])){
         $selectdemande = $bdd ->prepare('select * from demandes where ref_devis = ?');
         $selectdemande->execute(array($devis));
 
-        $id_membres = $bdd ->prepare('select * from demandes where ref_devis = ?');
+        $id_membres = $bdd ->prepare('select * from demandes where ref_devis = ? ');
         $id_membres->execute(array($devis));
         $id_membre = $id_membres->fetch();
         $id_membre = $id_membre['id_membre'];
