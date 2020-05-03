@@ -1,8 +1,9 @@
 <?php
 
 include('../include/connect_bdd.php');
-$reponse = $bdd->query("SELECT * FROM membre WHERE admin = 1");
-$donnees = $reponse->fetch();
+$reponse = $bdd->prepare ("SELECT admin FROM membre WHERE id_membre = ?");
+$reponse->execute(array($_SESSION['id']));
+$admin=$reponse->fetch();
 
 if(isset($_SESSION['id'])) {
     $abonnement = $bdd->prepare("select * from abonnement_test where id_membre = ? ");
@@ -33,7 +34,7 @@ if(isset($_SESSION['id'])) {
                     echo "<li><a href=\"../demande_service/choice_service.php\">Demande et Service<i class=\"fas fa-users-cog\"></i></i></a></li>";
                 }
                 echo "<li><a href=\"../stripe/abonnement.php\">Abonnement<i class=\"fas fa-users-cog\"></i></a></li>";
-                if ($donnees['pseudo'] == $_SESSION['pseudo']) {
+                if (1 == $admin['admin']) {
                     echo "<li><a href=\"../back_office/gestionBOMembre.php\">Back Office<i class=\"fas fa-users-cog\"></i></i></a></li>";
                 }
                 echo "<li><a href=\"../connexion/deconnexion.php\">Deconnexion<i class=\"fas fa-users-cog\"></i></i></a></li>";

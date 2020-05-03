@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
+    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/connect_bdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/connect_bdd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/header.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +30,13 @@
   </component>
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -116,6 +127,7 @@
       <workItem from="1588338526424" duration="27465000" />
       <workItem from="1588407065843" duration="18663000" />
       <workItem from="1588493633691" duration="8811000" />
+      <workItem from="1588512751544" duration="1109000" />
     </task>
     <servers />
   </component>
