@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RequestAPI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RequestAPI_jar</output-path>
+    <root id="archive" name="RequestAPI.jar">
+      <element id="module-output" name="RequestAPI" />
+      <element id="extracted-dir" path="D:/Cour/Esgi/2A/mysql-connector-java-5.1.48/mysql-connector-java-5.1.48.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
