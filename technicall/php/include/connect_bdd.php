@@ -1,7 +1,7 @@
 <?php
 try
 {    // connection à la base de données
-$bdd = new PDO('mysql:host=localhost:3307;dbname=technicall;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+$bdd = new PDO('mysql:host=localhost;dbname=technicall;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 }
 catch(Exception $e)
 {

@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/spipu/html2pdf" />
+    </include_path>
   </component>
   <component name="ProjectId" id="1YWvLdNeAusup7YrzCNTbMPCCT1" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -35,16 +31,32 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\wamp64\www\ESGI\2A\2emeSemestre\Projet_Anuelle_2A\technicall\php\multi_langue" />
+      <recent name="D:\wamp64\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\index" />
       <recent name="D:\wamp641\www\technicall\php\include" />
       <recent name="D:\wamp641\www\technicall\php\demande_service" />
       <recent name="D:\wamp641\www\technicall\php\back_office" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\technicall\php\stripe" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="gestionBOMembre.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/php/back_office/gestionBOMembre.php">
@@ -90,30 +102,44 @@
       <workItem from="1586075362347" duration="15729000" />
       <workItem from="1586615992397" duration="1913000" />
       <workItem from="1586699097528" duration="6050000" />
-      <workItem from="1586779488043" duration="1056000" />
-      <workItem from="1585901360392" duration="6038000" />
-      <workItem from="1586813238573" duration="5558000" />
-      <workItem from="1586867839059" duration="1800000" />
-      <workItem from="1587742788737" duration="694000" />
-      <workItem from="1587752565344" duration="600000" />
+      <workItem from="1586779488043" duration="14083000" />
+      <workItem from="1586807004291" duration="2763000" />
+      <workItem from="1586809905923" duration="25000" />
+      <workItem from="1586861016779" duration="4159000" />
+      <workItem from="1587125313949" duration="14786000" />
+      <workItem from="1587210909200" duration="1900000" />
+      <workItem from="1587215018058" duration="23000" />
+      <workItem from="1587226318278" duration="7072000" />
+      <workItem from="1587296475006" duration="7847000" />
+      <workItem from="1587384338169" duration="5299000" />
+      <workItem from="1587454733395" duration="37000" />
+      <workItem from="1587555769299" duration="3861000" />
+      <workItem from="1587630531404" duration="421000" />
+      <workItem from="1587812806983" duration="32236000" />
+      <workItem from="1587901476837" duration="20472000" />
+      <workItem from="1587980009755" duration="31000" />
+      <workItem from="1588012192652" duration="11143000" />
+      <workItem from="1588061981167" duration="17000" />
+      <workItem from="1588096999899" duration="13540000" />
+      <workItem from="1588182189607" duration="10785000" />
+      <workItem from="1588338526424" duration="27465000" />
+      <workItem from="1588407065843" duration="18663000" />
+      <workItem from="1588493633691" duration="8811000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="582" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586813494347">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="582" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586813494347" />
-    <state x="648" y="448" key="NewPhpFileDialog" timestamp="1586813463311">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="648" y="448" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586813463311" />
-    <state x="719" y="0" width="1208" height="1047" key="dock-window-1" timestamp="1586867882123">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="719" y="0" width="1208" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1586867882123" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/back_office/gestionBOMembre.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

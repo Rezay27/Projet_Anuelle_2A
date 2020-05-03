@@ -17,13 +17,13 @@ if (isset($_POST['Modifier'])) {
         $description1 = htmlspecialchars($_POST['description1modif']);
         $description2 = htmlspecialchars($_POST['description2modif']);
         $description3 = htmlspecialchars($_POST['description3modif']);
-        $nbheure = htmlspecialchars($_POST['nbheuremodif']);
+        $nbpoint = htmlspecialchars($_POST['nbpointmodif']);
 
         $modif_type = $bdd->prepare("update type_abonnement set nom=?,prix=? where id=?");
         $modif_type->execute(array($nom, $prix * 100, $id));
 
-        $modif_info = $bdd->prepare("update info_abonnement set description1 = ? , description2 = ? , description3 = ? , nb_heure = ? where type_abonnement = ? ");
-        $modif_info->execute(array($description1, $description2, $description3, $nbheure, $id));
+        $modif_info = $bdd->prepare("update info_abonnement set description1 = ? , description2 = ? , description3 = ? , nb_point = ? where type_abonnement = ? ");
+        $modif_info->execute(array($description1, $description2, $description3, $nbpoint, $id));
 
         header('Location: gestionBOAbonnement.php?modif=ok');
 
@@ -56,20 +56,20 @@ if (isset($_POST['Modifier'])) {
                     <form onsubmit="return verifF(this)" action="verifaddabonnementbo.php" method="post" name="addabonnementbo" enctype="multipart/form-data" type="formulaire">
                         <label for="nom_abonnement"> Nom :</label>
                         <span id="erreur_nom"></span>
-                        <input onblur="verifNom(this)" type="text" name="nom_abonnement" placeholder="Nom de l'abonnement">
+                        <input  type="text" name="nom_abonnement" placeholder="Nom de l'abonnement">
                         <label> Prix :</label>
                         <input type="number" name="prix_abonnement" placeholder="Prix de l'abonnement">
                         <label> Description 1 :</label>
                         <span class="erreur_description1"></span>
-                        <input ="description1" onblur="verifDescription1(this)" type="text" name="description1_abonnement" placeholder="Description n°1">
+                        <input class="description" onblur="verifDescription1(this)" type="text" name="description1_abonnement" placeholder="Description n°1">
                         <label> Description 2 :</label>
                         <span class="erreur_description2"></span>
                         <input class="description" onblur="verifDescription2(this)" type="text" name="description2_abonnement" placeholder="Description n°2">
                         <label> Description 3 :</label>
                         <span class="erreur_description3"></span>
                         <input class="description" onblur="verifDescription3(this)" type="text" name="description3_abonnement" placeholder="Description n°3">
-                        <label> Nombre d'heure :</label>
-                        <input type="number" name="nombreH_abonnement" placeholder="Nombre d'heure">
+                        <label> Nombre de point :</label>
+                        <input type="number" name="nombreP_abonnement" placeholder="Nombre de point">
                         <input class="submitservice" type="submit" name="valider_abonnement_bo" value="Ajouter le service">
                     </form>
                 </section>
@@ -96,7 +96,7 @@ if (isset($_POST['Modifier'])) {
                             <th> Description n°1</th>
                             <th> Description n°2</th>
                             <th> Description n°3</th>
-                            <th> Nombre d'heure</th>
+                            <th> Nombre de point</th>
                             <th> Supprimer</th>
                             <th> Modifier</th>
                         </tr>
@@ -117,8 +117,8 @@ if (isset($_POST['Modifier'])) {
                                     <td><textarea class="modifie" type="text"
                                                   name="description3modif"><?php echo $list_abonnement['description3']; ?></textarea>
                                     </td>
-                                    <td><input class="modifie" type="text" name="nbheuremodif"
-                                               value="<?php echo $list_abonnement['nb_heure']; ?>"></td>
+                                    <td><input class="modifie" type="text" name="nbpointmodif"
+                                               value="<?php echo $list_abonnement['nb_point']; ?>"></td>
                                     <td><a href="gestionBOAbonnement.php?abonnement=<?= $list_abonnement['nom']; ?>">
                                             Supprimer </a></td>
                                     <?php if (isset($_GET['abonnement']) AND !empty($_GET['abonnement'])) {

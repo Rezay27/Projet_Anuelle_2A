@@ -13,9 +13,10 @@ function surligne(champ, erreur)
 
 
 //------------Verification nom-----------
+/*
 function verifNom(champ)
 {
-    var regex = new RegExp("^[a-zA-Z0-9]{5,25}$","g");
+    var regex = new RegExp("^[a-zA-Z0-9](\d+\s?){5,25}$");
     if(!regex.test(champ.value))
     {
         surligne(champ, true);
@@ -32,6 +33,7 @@ function verifNom(champ)
 
     }
 }
+*/
 
 //------------Verification description 1-----------
 function verifDescription1(champ)
@@ -96,13 +98,13 @@ function verifDescription3(champ)
 
 function verifF(f)
 {
-    var nomOk = verifNom(f.nom_abonnement);
+    //var nomOk = verifNom(f.nom_abonnement);
     var description1Ok = verifDescription1(f.description1_abonnement);
     var description2Ok = verifDescription2(f.description2_abonnement);
     var description3Ok = verifDescription3(f.description3_abonnement);
 
 
-    if(nomOk === true && description1Ok === true && description2Ok === true && description3Ok === true)
+    if(/*nomOk === true && description1Ok === true &&*/ description2Ok === true && description3Ok === true)
     {
         return true;
     }
