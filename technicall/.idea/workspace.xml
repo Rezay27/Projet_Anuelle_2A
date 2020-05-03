@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e412bfd-e49c-4777-9bd9-d7d123ba998e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/back_office/gestionBoRole.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/back_office/verifaddrolebo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/include/connect_bdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/connect_bdd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/include/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,12 +126,18 @@
       <workItem from="1588338526424" duration="27465000" />
       <workItem from="1588407065843" duration="18663000" />
       <workItem from="1588493633691" duration="8811000" />
-      <workItem from="1588512751544" duration="1109000" />
+      <workItem from="1588512751544" duration="3131000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="701" y="461" key="NewPhpFileDialog" timestamp="1588514800507">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="461" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588514800507" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
