@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/technicall/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -44,7 +44,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588543022383</updated>
-      <workItem from="1588543025604" duration="1115000" />
+      <workItem from="1588543025604" duration="3149000" />
+      <workItem from="1588592010868" duration="1493000" />
     </task>
     <servers />
   </component>
@@ -52,9 +53,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="636" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588543025952">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588549360658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1680.140.1680.1010/1920.113.1920.1040@0.0.1920.1040" timestamp="1588543025952" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1680.140.1680.1010/1920.113.1920.1040@0.0.1920.1040" timestamp="1588549360658" />
+    <state x="636" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588592011280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="636" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1680.140.1680.1010/1920.113.1920.1040@0.0.1920.1040" timestamp="1588592011280" />
   </component>
 </project>

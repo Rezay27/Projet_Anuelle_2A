@@ -24,7 +24,7 @@ if (isset($_GET['refuser'])) {
         $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
         // send email
-        mail("gabriel76.viot@gmail.com", "Demande refusée", $msg, $headers);
+        mail("gabriel76.viot@gmail.com", "Demande refusé", $msg, $headers);
 
 
         header('Location:gestionBoDemandesPerso.php?refuser=ok');

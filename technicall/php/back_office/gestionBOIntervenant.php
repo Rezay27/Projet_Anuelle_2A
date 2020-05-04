@@ -141,7 +141,7 @@ if ($admin['admin'] == 1) {
                                             $update = $bdd->prepare('update intervenant set mdp=? where id = ? ');
                                             $update->execute(array($mdp,$id));
                                             $msg = '<p>Bonjour '. $member1['prenom'].', afin de compléter la procédure d\'enregistrement sur notre site : veuillez vous rendre sur ce lien : </p><br>';
-                                            $msg .= '<a href="http://localhost/technicall/php/connexion/connexionIntervenant.php">Lien </a><br>';
+                                            $msg .= '<a href="http://localhost/Projet_Anuelle_2A/technicall/php/connexion/connexionIntervenant.php">Lien </a><br>';
                                             $msg .= '<p>Votre mot de passe de connexion est le suivant : <strong> '. $mdp .'</strong></p><br>';
                                             $msg .= '<p>Il vous sera demander de changer de mot de passe a votre première connexion</p>';
                                             $msg .= '<h3>Merci d\'avoir rejoint la communauté ! </h3>';
@@ -149,7 +149,7 @@ if ($admin['admin'] == 1) {
                                             $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
                                             // send email
-                                            mail("gabriel.viot76@gmail.com","Finalisation d'inscription",$msg,$headers);
+                                            mail("gabriel76.viot@gmail.com","Finalisation d'inscription",$msg,$headers);
                                             header('Location:gestionBOIntervenant.php?');
                                         }?>
                                 </tr>

@@ -291,7 +291,7 @@ try {
     $pdf->pdf->SetKeywords('HTML2PDF, Devis, PHP');
     $pdf->writeHTML($content);
     $pdf->output('Devis'.$devis, 'D');
-    $pdf->output('D:\wamp64\www\technicall\images\DevisPerso\Devis'. $devis, 'F');
+    $pdf->output('C:\wamp64\www\Projet_Anuelle_2A\technicall\images\DevisPerso\Devis'. $devis, 'F');
 } catch (HTML2PDF_exception $e) {
     die($e);
 } ?>

@@ -136,7 +136,7 @@ $tva = $prix_total - $prix_ht;
                     <?php
                     $msg = '<p>Bonjour ,<br> Votre demande n° '.$demande['id_demandes'].' concernant : "'. $demande['nom_demande'] .'" a bien été acceptée de la part de nos équipes. Un devis a donc été généré afin de répondre au mieux à votre demande.';
                     $msg .= 'Nous vous invitons à prendre connaissance de votre devis en cliquant sur ce lien </p>';
-                    $msg .= '<a href="http://localhost/technicall/php/demande_service/acceptedemandeperso.php?devis='.$demande['ref_devis'].'&id='.$demande['id_membre'].'">Lien </a>';
+                    $msg .= '<a href="http://localhost/Projet_Anuelle_2A/technicall/php/demande_service/acceptedemandeperso.php?devis='.$demande['ref_devis'].'&id='.$demande['id_membre'].'">Lien </a>';
                     $msg .= '<p>Vous aurez la possibilité de l’accepter  si cela vous convient où de le refuser. Une fois votre réponse envoyé, votre demande sera traitée dans les plus brefs délais par nos équipes. 
 </p>';
                     $msg .= '<h3>A bientôt ! </h3>';

@@ -355,7 +355,7 @@ $abonnement_exist = $abonnement ->fetch();
         $pdf->pdf->SetKeywords('HTML2PDF, Devis, PHP');
         $pdf->writeHTML($content);
         $pdf->output('devis'. $last_devis. '-'. $date.'.pdf','D');
-        $pdf->output('D:\wamp64\www\technicall\images\Devis\Devis'. $last_devis. '-'. $date .'.pdf','F');
+        $pdf->output('C:\wamp64\www\Projet_Anuelle_2A\technicall\images\Devis\Devis'. $last_devis. '-'. $date .'.pdf','F');
     } catch (HTML2PDF_exception $e) {
         die($e);
     }?>

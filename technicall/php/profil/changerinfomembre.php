@@ -27,7 +27,7 @@ $id= $_SESSION['id'];
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 personal-info">
             <h3>Information personnelles</h3>
-            <form action="modifinfoprofil.php?id=<?=$id?>" class="form-horizontal" role="form" enctype="multipart/form-data" method="post">
+            <form action="modifinfoprofil.php?id=<?=$id?>" class="form-horizontal" role="form" enctype="multipart/form-data" id='inscription' type="formulaire" method="post" name="inscription" onsubmit="return verifF(this)">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Prenom:</label>
                     <div class="col-lg-8">
@@ -59,21 +59,25 @@ $id= $_SESSION['id'];
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Code Postal:</label>
+                    <label  class="col-lg-3 control-label">Code Postal:</label>
                     <div class="col-lg-8">
                         <input class="form-control" type ="text" name="editcp" value="<?php echo $inter['code_postal'];?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Mot de passe:</label>
+                    <label for="password" class="col-md-3 control-label">Mot de passe:</label>
                     <div class="col-md-8">
-                        <input class="form-control" value="" name="editpassword" type="password">
+                        <label for="password"></label>
+                        <span id="erreur3"></span><br>
+                        <input  onblur="verifMdp(this)" id="password" class="form-control" value="" name="editpassword" type="password">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Confirm password:</label>
+                    <label for="password" class="col-md-3 control-label">Confirm password:</label>
                     <div class="col-md-8">
-                        <input class="form-control" value="" name="editpasswordverif" type="password">
+                        <span id="erreur4"></span><br>
+
+                        <input  onblur="verifMdp2(this)" id="password_conf" class="form-control" value="" name="editpasswordverif" type="password">
                     </div>
                 </div>
                 <div class="form-group">
@@ -88,6 +92,7 @@ $id= $_SESSION['id'];
         </div>
     </div>
 </div>
+<script type="text/javascript" src="../../js/editmembre.js"></script>
 <?php include('../include/footer.php'); ?>
 </body>
 </html>

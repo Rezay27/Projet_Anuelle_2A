@@ -16,7 +16,7 @@ $tableau1 = explode('-', $tableau);
 $numero_d = $bdd -> prepare('select id_demandes from demandes order by id_demandes DESC LIMIT 0, 1');
 $numero_d ->execute(array());
 $last_devis = $numero_d -> fetch();
-$last_devis = $last_devis['id_demandes']-1;
+$last_devis = $last_devis['id_demandes'];
 
 $prix_total = end($tableau1);
 $prix_ht = $prix_total / 1.2;
@@ -206,7 +206,7 @@ try {
     $pdf->pdf->SetKeywords('HTML2PDF, Facture, PHP');
     $pdf->writeHTML($content);
     $pdf->output('Facture'. $last_devis. '-'. $date.'.pdf','D');
-    $pdf->output('D:\wamp64\www\technicall\images\Facture\Facture'. $last_devis. '-'. $date .'.pdf','F');
+    $pdf->output('C:\wamp64\www\Projet_Anuelle_2A\technicall\images\Facture\Facture'. $last_devis. '-'. $date .'.pdf','F');
 } catch (HTML2PDF_exception $e) {
     die($e);
 }?>
