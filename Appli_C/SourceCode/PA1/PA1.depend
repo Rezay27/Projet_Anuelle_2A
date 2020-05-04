@@ -2501,3 +2501,27 @@
 	<stddef.h>
 	<stdint.h>
 
+1588553664 source:d:\wamp64\www\esgi\2a\2emesemestre\projet_anuelle_2a\appli_c\sourcecode\pa1\main.c
+	<windows.h>
+	<stdbool.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+	"qrcodegen.h"
+	<SDL/SDL.h>
+	<gtk/gtk.h>
+	<string.h>
+	<MYSQL/mysql.h>
+
+1588549846 d:\wamp64\www\esgi\2a\2emesemestre\projet_anuelle_2a\appli_c\sourcecode\pa1\qrcodegen.h
+	<stdbool.h>
+	<stddef.h>
+	<stdint.h>
+
+1588549846 source:d:\wamp64\www\esgi\2a\2emesemestre\projet_anuelle_2a\appli_c\sourcecode\pa1\qrcodegen.c
+	<assert.h>
+	<limits.h>
+	<stdlib.h>
+	<string.h>
+	"qrcodegen.h"
+

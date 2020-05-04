@@ -113,6 +113,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
+                        <signal name="changed" handler="on_nameEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -154,6 +155,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
+                        <signal name="changed" handler="on_nicknameEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -196,6 +198,7 @@
                         <property name="invisible_char_set">True</property>
                         <property name="progress_pulse_step">0.11999999731779099</property>
                         <property name="input_purpose">email</property>
+                        <signal name="changed" handler="on_mailEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -237,6 +240,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">phone</property>
+                        <signal name="changed" handler="on_phoneEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -301,6 +305,7 @@
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_dayEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -341,6 +346,7 @@
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_monthEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -381,6 +387,7 @@
                                 <property name="max_length">4</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_yearEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -461,6 +468,7 @@
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_townEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -501,6 +509,7 @@
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_addressEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -541,6 +550,7 @@
                                 <property name="max_length">5</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_postalcodeEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -642,6 +652,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="image_position">right</property>
+                        <signal name="clicked" handler="on_generateQr_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -655,6 +666,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_register_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -721,6 +733,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_get_clicked" object="id1" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -734,6 +747,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_update_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -773,13 +787,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="nameEntry1">
+                      <object class="GtkEntry" id="mnameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="max_length">45</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
+                        <signal name="changed" handler="on_nameEntry1_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -814,13 +829,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="nicknameEntry1">
+                      <object class="GtkEntry" id="mnicknameEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="max_length">45</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
+                        <signal name="changed" handler="on_nicknameEntry1_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -855,7 +871,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="mailEntry1">
+                      <object class="GtkEntry" id="mmailEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="max_length">255</property>
@@ -863,6 +879,7 @@
                         <property name="invisible_char_set">True</property>
                         <property name="progress_pulse_step">0.11999999731779099</property>
                         <property name="input_purpose">email</property>
+                        <signal name="changed" handler="on_mailEntry1_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -897,13 +914,14 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="phoneEntry1">
+                      <object class="GtkEntry" id="mphoneEntry">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="max_length">10</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">phone</property>
+                        <signal name="changed" handler="on_phoneEntry1_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -962,12 +980,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="dayEntry1">
+                              <object class="GtkEntry" id="mdayEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_dayEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1002,12 +1021,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="monthEntry1">
+                              <object class="GtkEntry" id="mmonthEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_monthEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1042,12 +1062,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="yearEntry1">
+                              <object class="GtkEntry" id="myearEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">4</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_yearEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1122,12 +1143,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="townEntry1">
+                              <object class="GtkEntry" id="mtownEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_townEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1162,12 +1184,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="addressEntry1">
+                              <object class="GtkEntry" id="maddressEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_addressEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1202,12 +1225,13 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkEntry" id="postalcodeEntry1">
+                              <object class="GtkEntry" id="mpostalcodeEntry">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="max_length">5</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
+                                <signal name="changed" handler="on_postalcodeEntry1_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>

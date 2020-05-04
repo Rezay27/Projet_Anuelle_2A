@@ -262,6 +262,7 @@ G_MODULE_EXPORT void on_mainWindow_destroy()
 //Partie evenment enregistrement
 //Bouton Insertion Intervenant
 G_MODULE_EXPORT void on_generateQr_clicked(GtkButton *button){
+    printf("salut");
     char dest[255];
     createId(&gonnaBeRegister);
     printf("id : %s\n",gonnaBeRegister.id);
@@ -330,7 +331,6 @@ G_MODULE_EXPORT void on_update_clicked(GtkButton *button){
 G_MODULE_EXPORT void on_get_clicked(GtkButton *button,GtkEntry * id){
 
     strcpy(userChange.id,gtk_entry_get_text(id));
-
     mainMysql(TYPE_SELECT,&userChange);
 
     gtk_entry_set_text(GTK_ENTRY(mname),userChange.name);
