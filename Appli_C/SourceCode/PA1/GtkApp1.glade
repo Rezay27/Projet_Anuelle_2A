@@ -794,7 +794,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
-                        <signal name="changed" handler="on_nameEntry1_changed" swapped="no"/>
+                        <signal name="changed" handler="on_mnameEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -836,7 +836,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">name</property>
-                        <signal name="changed" handler="on_nicknameEntry1_changed" swapped="no"/>
+                        <signal name="changed" handler="on_mnicknameEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -879,7 +879,7 @@
                         <property name="invisible_char_set">True</property>
                         <property name="progress_pulse_step">0.11999999731779099</property>
                         <property name="input_purpose">email</property>
-                        <signal name="changed" handler="on_mailEntry1_changed" swapped="no"/>
+                        <signal name="changed" handler="on_mmailEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -921,7 +921,7 @@
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
                         <property name="input_purpose">phone</property>
-                        <signal name="changed" handler="on_phoneEntry1_changed" swapped="no"/>
+                        <signal name="changed" handler="on_mphoneEntry_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -986,7 +986,7 @@
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_dayEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_mdayEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1027,7 +1027,7 @@
                                 <property name="max_length">2</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_monthEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_mmonthEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1068,7 +1068,7 @@
                                 <property name="max_length">4</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_yearEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_myearEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1149,7 +1149,7 @@
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_townEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_mtownEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1190,7 +1190,7 @@
                                 <property name="max_length">45</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_addressEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_maddressEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1231,7 +1231,7 @@
                                 <property name="max_length">5</property>
                                 <property name="invisible_char">●</property>
                                 <property name="invisible_char_set">True</property>
-                                <signal name="changed" handler="on_postalcodeEntry1_changed" swapped="no"/>
+                                <signal name="changed" handler="on_mpostalcodeEntry_changed" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
